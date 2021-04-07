@@ -3,3 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* COLORS */
+:root {
+    --pirmary: #FF5349;
+    --secondary: #C71585;
+}
+
+/* HEADER STYLING */
+header div {
+    background: var(--secondary);
+    width: 100%;
+}
