@@ -15,3 +15,10 @@ header div {
     background: var(--secondary);
     width: 100%;
 }
+
+/* FOOTER STYLING */
+footer {
+    background: var(--secondary);
+    text-decoration: none;
+    
+}
