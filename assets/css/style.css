@@ -6,19 +6,21 @@
 
 /* COLORS */
 :root {
-    --pirmary: #FF5349;
-    --secondary: #C71585;
+    --pirmary: #606060ff;
+    --secondary: #D6ED17FF;
 }
 
 /* HEADER STYLING */
 header div {
-    background: var(--secondary);
+    background: var(--pirmary);
     width: 100%;
 }
 
 /* FOOTER STYLING */
 footer {
-    background: var(--secondary);
+    background: var(--pirmary);
+    bottom: 0;
+    position: absolute;
+    width: 100%;
     text-decoration: none;
-    
 }
