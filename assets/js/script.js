@@ -1,11 +1,12 @@
 
 
-setTimeout(function(){
-    $(".modal").show();
-},1000);
+
 
 
 // Gettin age of the user
+setTimeout(function(){
+    $(".modal").show();
+},1000);
 $("#yes").on("click",function(){
    $(".modal").hide();
 })
