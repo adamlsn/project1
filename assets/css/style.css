@@ -74,12 +74,6 @@ footer {
     text-decoration: none;
 }
 
-<<<<<<< HEAD
-#drink-section img {
-    width: 25%;
-    height: auto;
-=======
 footer a {
     color: var(--secondary);
->>>>>>> feature/styling
 }
