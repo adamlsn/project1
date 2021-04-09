@@ -18,12 +18,14 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous"
     />
+    <!-- IMPORTING JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- HEADER -->
     <header class="navbar">
       <div class="navbar-item">
-        <h1 class="title m-2 p-3" style="color: white">Songs & Spirits</h1>
+        <h1 class="title m-2 p-3" style="color: var(--secondary);">Songs <span>&</span> Spirits</h1>
       </div>
     </header>
 
@@ -32,41 +34,14 @@
         <div class="column is-centered has-text-centered">
           <h2 class="title pt-6">Spirits</h2>
           <!-- start of dropdown -->
-          <div class="dropdown section">
-            <div class="dropdown-trigger">
-              <button
-                class="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu2"
-              >
-                <span>Pick a Spirit</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
-            </div>
-            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-              <div class="dropdown-content">
-                <div class="dropdown-item">
-                  <p>Whiskey</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Rum</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Tequila</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Vodka</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Gin</p>
-                </div>
-              </div>
+          <div class="dropdown">
+            <button class="dropbtn">Choose a Spirit</button>
+            <div class="dropdown-content">
+              <a id="bourbon">Bourbon</a>
+              <a id="rum">Rum</a>
+              <a id="bourbon">Vodka</a>
+              <a id="gin">Gin</a>
+              <a id="tequila">Tequila</a>
             </div>
           </div>
           <!-- End of dropdown -->
@@ -87,11 +62,11 @@
         </div>
       </div>
     </main>
-    <footer class="p-4">
+    <footer>
       <div class="section">
         <a
           href="https://github.com/adamlsn/project1"
-          style="color: white; text-decoration: none"
+          style="text-decoration: none"
           >GitHub</a
         >
         <p style="color: white">
