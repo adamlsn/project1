@@ -1,4 +1,4 @@
-// Gettin age of the user
+    // Getting age of the user
 setTimeout(function(){
     $(".modal").show();
 },1000);
