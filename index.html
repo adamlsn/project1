@@ -18,19 +18,23 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous"
     />
+    <!-- IMPORTING JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- HEADER -->
     <header class="navbar">
       <div class="navbar-item">
-        <h1 class="title m-2 p-3" style="color: white">Songs & Spirits</h1>
+        <h1 class="title m-2 p-3" style="color: var(--secondary);">Songs <span>&</span> Spirits</h1>
       </div>
     </header>
 
     <main>
-      <div class="columns">
-        <div class="column">
+      <div class="columns is-desktop is-centered">
+        <div class="column is-centered has-text-centered">
+          <h2 class="title pt-6">Spirits</h2>
           <!-- start of dropdown -->
+<<<<<<< HEAD
           <div class="dropdown section">
             <div class="dropdown-trigger">
               <button
@@ -67,19 +71,36 @@
                   <p>Gin</p>
                 </div>
               </div>
+=======
+          <div class="dropdown">
+            <button class="dropbtn">Choose a Spirit</button>
+            <div class="dropdown-content">
+              <a id="bourbon">Bourbon</a>
+              <a id="rum">Rum</a>
+              <a id="bourbon">Vodka</a>
+              <a id="gin">Gin</a>
+              <a id="tequila">Tequila</a>
+>>>>>>> feature/styling
             </div>
             </section>
           </div>
           <!-- End of dropdown -->
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> feature/styling
           <!-- start of cocktail output -->
-          <div class="section">
-              <img class="m-1" src="./assets/images/Temp_plate.svg" />
+          <div class="column">
+            <div class="section">
+                <img src="./assets/images/Temp_plate.svg" />
             </div>
+          </div>
         </div>
 
-        <div class="column">
+        <div class="column is-centered has-text-centered">
           <div class="section">
+            <h2 class="title">Songs</h2>
             <img src="./assets/images/Temp_plate.svg" />
           </div>
         </div>
@@ -89,7 +110,7 @@
       <div class="section">
         <a
           href="https://github.com/adamlsn/project1"
-          style="color: white; text-decoration: none"
+          style="text-decoration: none"
           >GitHub</a
         >
         <p style="color: white">
