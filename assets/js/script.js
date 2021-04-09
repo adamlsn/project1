@@ -6,12 +6,11 @@ setTimeout(function(){
 
 
 // Gettin age of the user
-$(".submit-btn").on("click",function(){
-    const today = moment().format("MMMM D YYYY");
-    console.log(today);
-    const ageMonth = $("#month").val();
-    const ageDay = $("#day").val();
-    const ageYear = $("#year").val();
+$("#yes").on("click",function(){
+   $(".modal").hide();
+})
+$("#no").on("click",function(){
+    $("p").html("You should be 21!");
 })
 // JAVASCRIPT FUNCTIONALITY OF DROPDOWN
 
