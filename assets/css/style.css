@@ -24,3 +24,8 @@ footer {
     width: 100%;
     text-decoration: none;
 }
+
+#drink-section img {
+    width: 25%;
+    height: auto;
+}
