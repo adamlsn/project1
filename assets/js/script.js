@@ -5,3 +5,9 @@ let dropdown = document.querySelector('.dropdown');
                 event.stopPropagation();
                 dropdown.classList.toggle('is-active');
             });
+
+// Gettin age of the user
+const today = moment().format("DD,MMMM,YYYY");
+console.log(today);
+
+

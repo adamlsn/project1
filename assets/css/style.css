@@ -6,12 +6,12 @@
 
 /* COLORS */
 :root {
-    --pirmary: #FF5349;
+    --primary: #FF5349;
     --secondary: #C71585;
 }
 
 /* HEADER STYLING */
-header div {
+header div,.hero {
     background: var(--secondary);
     width: 100%;
 }
@@ -20,5 +20,7 @@ header div {
 footer {
     background: var(--secondary);
     text-decoration: none;
-    
+}
+#hide {
+    display: none;
 }

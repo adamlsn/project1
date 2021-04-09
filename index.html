@@ -26,12 +26,24 @@
         <h1 class="title m-2 p-3" style="color: white">Songs & Spirits</h1>
       </div>
     </header>
+    <section class="hero is-large has-text-centered" >
+      <div class="hero-body">
+          <p class="title">
+              You must be 21 to enter the page.
+          </p>
+          <div class="age-group">
+              <input id="month" placeholder="MM">
+              <input id="day" placeholder="DD">
+              <input id="year" placeholder="YY">
+              <button>Submit</button>
+          </div>
+  </section>
 
     <main>
       <div class="columns">
         <div class="column">
           <!-- start of dropdown -->
-          <div class="dropdown section">
+          <div class="dropdown section" id="hide">
             <div class="dropdown-trigger">
               <button
                 class="button"
@@ -68,35 +80,36 @@
               </div>
             </div>
           </div>
+          
 
           <!-- End of dropdown -->
+          
           <!-- start of cocktail output -->
-          <div class="section">
+          <div class="section" id="hide">
               <img class="m-1" src="./assets/images/Temp_plate.svg" />
             </div>
         </div>
-
-        <div class="column">
+        <div class="column" id="hide">
           <div class="section">
             <img src="./assets/images/Temp_plate.svg" />
           </div>
         </div>
       </div>
+      
     </main>
     <footer>
       <div class="section">
         <a
           href="https://github.com/adamlsn/project1"
           style="color: white; text-decoration: none"
-          >GitHub</a
-        >
+          >GitHub</a>
         <p style="color: white">
           Contributions: Adam Olson, Devon Ross, Kaan Nazlioz, Mitchell
           Spierings
         </p>
       </div>
     </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
