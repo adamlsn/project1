@@ -20,7 +20,6 @@ header div {
 footer {
     background: var(--pirmary);
     bottom: 0;
-    position: absolute;
     width: 100%;
     text-decoration: none;
 }
