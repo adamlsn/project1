@@ -1,8 +1,3 @@
-
-
-
-
-
 // Gettin age of the user
 setTimeout(function(){
     $(".modal").show();
