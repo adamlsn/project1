@@ -95,10 +95,8 @@ function appendCocktail(drinkId, drinkName){
         console.log(data.drinks[0].strDrink);
 
         let drinkSection = document.querySelector('#drink-section');
-
-        function clearcontent(elementID) {
-          document.getElementById(elementID).innerHTML = "";
-        }
+        
+        document.getElementById('drink-section').innerHTML = "";
 
         let drinkInfo = document.createElement('h4');
         drinkInfo.innerHTML = data.drinks[0].strDrink;
@@ -119,9 +117,7 @@ function appendCocktail(drinkId, drinkName){
           drinkSection.appendChild(ingredient);
         }
 
-        function clearcontent(elementID) {
-          document.getElementById(elementID).innerHTML = "";
-      }
+        
       });
     }
   )
