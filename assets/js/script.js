@@ -68,6 +68,8 @@ function generateCocktail(spirit){
         // console.log("DRINK NAME: " + drinkName);
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
+        console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
+        return;
       });
     }
   )
@@ -77,7 +79,7 @@ function generateCocktail(spirit){
 }
 
 //PULL APPROPRIATE COCKTAIL PAGE AND APPEND TO BODY
-function appendCocktail(drinkId, drinkName){
+function appendCocktail(drinkId){
 	fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
   .then(
     //NONRESPONSE CONSOLE WARNING
@@ -90,7 +92,7 @@ function appendCocktail(drinkId, drinkName){
 
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
-        console.log("Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function");
+        console.log("function called.");
       });
     }
   )
