@@ -1,11 +1,12 @@
 //***************************
 //GLOBAL VARIABLES
 //***************************
+//cocktail
 let spirit = "";
 let drinkName= "";
 let drinkId = "";
 
-// START OF TRIVIA
+//trivia
 var startTriviaBtn = document.getElementById("start") //initial screen start trivia game button
 var triviaEl = document.getElementById("trivia"); //set var to trivia container
 var introEl = document.getElementById("intro"); //set var to text field for displaying intro question
@@ -22,6 +23,9 @@ var apiResults;
 var score =0;
 var questionArrayLength = 10;
 
+//***************************
+//START OF TRIVIA
+//***************************
 function startTrivia() {
     //remove start trivia button
     startTriviaBtn.parentNode.removeChild(startTriviaBtn);
@@ -114,8 +118,8 @@ function checkAnswer(){
 
    }
 
-
 startTriviaBtn.addEventListener("click", startTrivia);
+
 //***************************
 //COCKTAIL DB API
 //***************************
@@ -180,7 +184,7 @@ function generateCocktail(spirit){
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
         console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
-        return;
+        // return;
       });
     }
   )
