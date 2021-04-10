@@ -88,6 +88,30 @@ function appendCocktail(drinkId, drinkName){
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
         console.log("Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function")
+        
+        console.log(data);
+        console.log(data.drinks[0].strDrink);
+
+        let drinkSection = document.querySelector('#drink-section');
+
+        let drinkInfo = document.createElement('h4');
+        drinkInfo.innerHTML = data.drinks[0].strDrink;
+
+        drinkSection.appendChild(drinkInfo);
+
+        let img = document.createElement('img');
+        img.src = data.drinks[0].strDrinkThumb;
+
+        drinkSection.appendChild(img);
+
+        for(let i=1; i<16; i++){
+          console.log(i);
+      
+          let ingredient = document.createElement('ons-list-item');
+          ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
+      
+          drinkSection.appendChild(ingredient);
+        }
       });
     }
   )

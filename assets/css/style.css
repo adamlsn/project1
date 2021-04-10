@@ -65,6 +65,13 @@ header div h1 span {
     background-color: #3e8e41;
   }
 
+/* COCKTAIL DISPLAY STYLING */
+
+#drink-section img{
+  width: 25%;
+  height: auto;
+}
+
 /* FOOTER STYLING */
 footer {
     background: var(--pirmary);
