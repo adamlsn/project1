@@ -43,6 +43,8 @@ $("#tequila").click(function(){
   generateCocktail(sprit);
 });
 
+
+
 //GENERATE COCKTAIL FUNCTION
 function generateCocktail(sprit){
 	fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + sprit)
@@ -94,6 +96,10 @@ function appendCocktail(drinkId, drinkName){
 
         let drinkSection = document.querySelector('#drink-section');
 
+        function clearcontent(elementID) {
+          document.getElementById(elementID).innerHTML = "";
+        }
+
         let drinkInfo = document.createElement('h4');
         drinkInfo.innerHTML = data.drinks[0].strDrink;
 
@@ -112,6 +118,10 @@ function appendCocktail(drinkId, drinkName){
       
           drinkSection.appendChild(ingredient);
         }
+
+        function clearcontent(elementID) {
+          document.getElementById(elementID).innerHTML = "";
+      }
       });
     }
   )
@@ -119,3 +129,6 @@ function appendCocktail(drinkId, drinkName){
     console.log('Fetch Error :-S', err);
   });
 }
+
+// COCKTAIL REFRESH TO GENERATE NEW DRINK
+
