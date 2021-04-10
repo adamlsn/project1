@@ -87,7 +87,7 @@ function appendCocktail(drinkId, drinkName){
 
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
-        console.log("Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function")
+        console.log(" Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function ")
         
         console.log(data);
         console.log(data.drinks[0].strDrink);
