@@ -65,8 +65,8 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
-        console.log("DRINK NAME: " + drinkName);
-        console.log("DRINK ID: " + drinkId);
+        // console.log("DRINK NAME: " + drinkName);
+        // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
       });
     }
@@ -102,3 +102,24 @@ function appendCocktail(drinkId, drinkName){
 //***************************
 //SPOTIFY
 //***************************
+
+function selectPlaylist(spirit) {
+  let openingUrl = "https://open.spotify.com/embed/playlist/";
+  let playlistUrl = ""
+  if (spirit === "Bourbon") {
+    playlistUrl = "37i9dQZF1DX3Fzl4v4w9Zp";
+  };
+  if (spirit === "Rum") {
+    playlistUrl = "37i9dQZF1DX83I5je4W4rP";
+  };
+  if (spirit === "Vodka") {
+    playlistUrl = "37i9dQZF1DWXRqgorJj26U";
+  };
+  if (spirit === "Gin") {
+    playlistUrl = "37i9dQZF1DWV7EzJMK2FUI";
+  };
+  if (spirit === "Tequila") {
+    playlistUrl = "37i9dQZF1DXa2PvUpywmrr";
+  };
+  document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
+}
