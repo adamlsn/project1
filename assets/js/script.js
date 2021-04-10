@@ -14,8 +14,15 @@ var introEl = document.getElementById("intro"); //set var to text field for disp
 var answerTrue; //global var for true button
 var answerFalse; //global var for false button
 var questionsEl=document.getElementById("questions"); //set var to text field for displaying questions
-var questionAmount //for the amount of questions user wants in game
-var triviaAnswer //for the correct answer provided from API
+var questionAmount; //for the amount of questions user wants in game
+var triviaQuestion; //for setting the API array as var
+var triviaAnswer; //for the correct answer provided from API
+var triviaIndex=0; //for the position in array
+var answerFeedback = document.getElementById("answerFeedback"); //for setting the answerFeedback field as var to display feedback on users answer to question
+var currentScore = document.getElementById("currentScore"); //for setting the text on the page for the current score
+var apiResults; 
+var score =0;
+var questionArrayLength = 10;
 
 function startTrivia() {
     //remove start trivia button
@@ -35,6 +42,8 @@ function startTrivia() {
     answerFalse.id = 'falseBtn';
     answerFalse.textContent = "False";
     triviaEl.appendChild(answerFalse);
+
+    checkAnswer();
 };
 
 //trivia API fetch and store 
@@ -44,12 +53,68 @@ function triviaAPI(){
     return response.json();
     })
     .then(function(response){
-        console.log(response.results[0])
-        questionsEl.innerHTML=response.results[0].question;
-        triviaAnswer = response.results[0].correct_answer;
+        console.log(response.results[triviaIndex])
+        console.log(response.results);
+        apiResults=response.results;
         console.log(triviaAnswer)
+        resultLoop();
     });
 }
+
+function resultLoop(){
+    if(triviaIndex>questionArrayLength){
+        gameResults();
+    }else{
+    triviaAnswer=apiResults[triviaIndex].correct_answer;
+    triviaQuestion=apiResults[triviaIndex].question;
+    questionsEl.innerHTML=triviaQuestion
+    }
+}
+
+function checkAnswer(){
+    document.getElementById("trueBtn").onclick = function() {
+        console.log("True button clicked");
+        if(triviaAnswer==="True"){
+            score += 10;
+            currentScore.innerHTML="Current Score: " + score;
+            answerFeedback.innerHTML="That's Correct!"
+            triviaIndex++;
+            console.log(score);
+            //add 2 seconds delay for reading response then clear text
+            resultLoop();
+            }
+            else{
+                answerFeedback.innerHTML="Incorrect";
+                triviaIndex++;
+                console.log(score);
+                //add 2 seconds delay for reading response then clear text
+                resultLoop();
+            }
+        }
+    document.getElementById("falseBtn").onclick = function() {
+        console.log("False button clicked");
+        if(triviaAnswer==="False"){
+            score += 10;
+            currentScore.innerHTML="Current Score: " + score;
+            answerFeedback.innerHTML="That's Correct!"
+            triviaIndex++;
+            console.log(score);
+            //add 2 seconds delay for reading response then clear text
+            resultLoop();
+            }   
+            else {
+            answerFeedback.innerHTML="Incorrect";
+            triviaIndex++;
+            console.log(score);
+            //add 2 seconds delay for reading response then clear text
+            resultLoop();
+            }
+        }
+    }
+
+   function gameResults(){
+
+   }
 
 
 startTriviaBtn.addEventListener("click", startTrivia);

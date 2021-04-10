@@ -22,3 +22,21 @@ footer {
     text-decoration: none;
     
 }
+
+
+/* START OF TRIVIA STYLING */
+.trivia-container{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#trueBtn{
+    margin: 10px;
+    width: 50px;
+}
+
+#falseBtn{
+    margin: 10px;
+    width: 50px;
+}
