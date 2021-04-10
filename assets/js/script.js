@@ -16,35 +16,35 @@ let drinkId = "";
 $("#bourbon").click(function(){
   sprit = "Bourbon";
   console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCoctail(sprit);
+  generateCocktail(sprit);
 });
 
 $("#rum").click(function(){
   sprit = "Rum";
   console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCoctail(sprit);
+  generateCocktail(sprit);
 });
 
 $("#vodka").click(function(){
   sprit = "Vodka";
   console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCoctail(sprit);
+  generateCocktail(sprit);
 });
 
 $("#gin").click(function(){
   sprit = "Gin";
   console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCoctail(sprit);
+  generateCocktail(sprit);
 });
 
 $("#tequila").click(function(){
   sprit = "Tequila";
   console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCoctail(sprit);
+  generateCocktail(sprit);
 });
 
 //GENERATE COCKTAIL FUNCTION
-function generateCoctail(sprit){
+function generateCocktail(sprit){
 	fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + sprit)
   .then(
     //NONRESPONSE CONSOLE WARNING
@@ -87,7 +87,7 @@ function appendCocktail(drinkId, drinkName){
 
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
-        console.log(" Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function ")
+        console.log("Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function")
         
         console.log(data);
         console.log(data.drinks[0].strDrink);
