@@ -72,6 +72,13 @@ header div h1 span {
   height: auto;
 }
 
+#drink-section h4 {
+  text-align: auto;
+  font-weight: 100;
+}
+
+
+
 /* FOOTER STYLING */
 footer {
     background: var(--pirmary);

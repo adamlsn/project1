@@ -3,7 +3,7 @@
 //***************************
 //GLOBAL VARIABLES
 //***************************
-let sprit = "";
+let spirit = "";
 let drinkName= "";
 let drinkId = "";
 
@@ -14,40 +14,40 @@ let drinkId = "";
 
 //BUTTON CLICK LISTENERS
 $("#bourbon").click(function(){
-  sprit = "Bourbon";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Bourbon";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
 });
 
 $("#rum").click(function(){
-  sprit = "Rum";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Rum";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
 });
 
 $("#vodka").click(function(){
-  sprit = "Vodka";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Vodka";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
 });
 
 $("#gin").click(function(){
-  sprit = "Gin";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Gin";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
 });
 
 $("#tequila").click(function(){
-  sprit = "Tequila";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Tequila";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
 });
 
 
 
 //GENERATE COCKTAIL FUNCTION
-function generateCocktail(sprit){
-	fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + sprit)
+function generateCocktail(spirit){
+	fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + spirit)
   .then(
     //NONRESPONSE CONSOLE WARNING
     function(response) {
@@ -111,13 +111,16 @@ function appendCocktail(drinkId, drinkName){
         for(let i=1; i<16; i++){
           console.log(i);
       
-          let ingredient = document.createElement('ons-list-item');
+          let ingredient = document.createElement('li');
           ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
         }
-
+        const drinkImage = document.getElementById("cocktail-img")
         
+        const strIngredient1 = $("<li>").text(drink.ingredients); 
+        $(".cocktail-img").appendChild(strIngredient1);
+
       });
     }
   )
@@ -126,5 +129,5 @@ function appendCocktail(drinkId, drinkName){
   });
 }
 
-// COCKTAIL REFRESH TO GENERATE NEW DRINK
+
 
