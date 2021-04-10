@@ -18,72 +18,49 @@
       integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
       crossorigin="anonymous"
     />
+    <!-- IMPORTING JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <!-- HEADER -->
     <header class="navbar">
       <div class="navbar-item">
-        <h1 class="title m-2 p-3" style="color: white">Songs & Spirits</h1>
+        <h1 class="title m-2 p-3" style="color: var(--secondary);">Songs <span>&</span> Spirits</h1>
       </div>
     </header>
 
     <main>
-      <div class="columns">
-        <div class="column">
+      <div class="columns is-desktop is-centered">
+        <div class="column is-centered has-text-centered">
+          <h2 class="title pt-6">Spirits</h2>
           <!-- start of dropdown -->
-          <div class="dropdown section">
-            <div class="dropdown-trigger">
-              <button
-                class="button"
-                aria-haspopup="true"
-                aria-controls="dropdown-menu2"
-              >
-                <span>Pick a Spirit</span>
-                <span class="icon is-small">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
+          <div class="dropdown">
+            <button class="dropbtn">Choose a Spirit</button>
+            <div class="dropdown-content">
+              <a id="bourbon">Bourbon</a>
+              <a id="rum">Rum</a>
+              <a id="vodka">Vodka</a>
+              <a id="gin">Gin</a>
+              <a id="tequila">Tequila</a>
             </div>
-            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
-              <div class="dropdown-content">
-                <div class="dropdown-item">
-                  <p>Whiskey</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Rum</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Tequila</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Vodka</p>
-                </div>
-                <hr class="dropdown-divider" />
-                <div class="dropdown-item">
-                  <p>Gin</p>
-                </div>
-              </div>
-            </div>
+            </section>
           </div>
-
           <!-- End of dropdown -->
           <!-- start of cocktail output -->
-          <div class="section">
-            <img class="m-1" src="./assets/images/Temp_plate.svg" />
+          <div class="column">
+            <div class="section">
+                <img id="coctail-img" src=""/>
+            </div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="column is-centered has-text-centered">
           <div class="section">
-            <img src="./assets/images/Temp_plate.svg" />
-          </div>
-        </div>
+            <h2 class="title">Songs</h2>
+            <iframe id="spotify-frame" src="" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>        </div>
       </div>
-      <div class="trivia-container">
-        <div class="trivia" id="trivia">
+      <div class="trivia-container rows">
+        <div class="trivia row" id="trivia">
           <p class="intro" id="intro">Are you ready for a challenge?</p>
           <p class="questions" id="questions"></p>
           <button class="trivia-start" id="start">Start Trivia</button>
@@ -96,7 +73,7 @@
       <div class="section">
         <a
           href="https://github.com/adamlsn/project1"
-          style="color: white; text-decoration: none"
+          style="text-decoration: none"
           >GitHub</a
         >
         <p style="color: white">
