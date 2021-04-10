@@ -62,7 +62,7 @@ header div h1 span {
   }
   
   .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-color: var(--secondary);
   }
 
 /* FOOTER STYLING */

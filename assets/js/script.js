@@ -1,9 +1,7 @@
-// CLIENT ID: '10516420d1604321857930e912172451';
-// SECRET: '7d4e3de30d5a4927ae3c109786767a8e';
 //***************************
 //GLOBAL VARIABLES
 //***************************
-let sprit = "";
+let spirit = "";
 let drinkName= "";
 let drinkId = "";
 
@@ -14,38 +12,43 @@ let drinkId = "";
 
 //BUTTON CLICK LISTENERS
 $("#bourbon").click(function(){
-  sprit = "Bourbon";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Bourbon";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
+  selectPlaylist(spirit);
 });
 
 $("#rum").click(function(){
-  sprit = "Rum";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Rum";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
+  selectPlaylist(spirit);
 });
 
 $("#vodka").click(function(){
-  sprit = "Vodka";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Vodka";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
+  selectPlaylist(spirit);
 });
 
 $("#gin").click(function(){
-  sprit = "Gin";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Gin";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
+  selectPlaylist(spirit);
 });
 
 $("#tequila").click(function(){
-  sprit = "Tequila";
-  console.log("CHOSEN SPRIT IS: " + sprit);
-  generateCocktail(sprit);
+  spirit = "Tequila";
+  console.log("CHOSEN SPIRIT IS: " + spirit);
+  generateCocktail(spirit);
+  selectPlaylist(spirit);
 });
 
 //GENERATE COCKTAIL FUNCTION
-function generateCocktail(sprit){
-	fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + sprit)
+function generateCocktail(spirit){
+	fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + spirit)
   .then(
     //NONRESPONSE CONSOLE WARNING
     function(response) {
@@ -95,3 +98,7 @@ function appendCocktail(drinkId, drinkName){
     console.log('Fetch Error :-S', err);
   });
 }
+
+//***************************
+//SPOTIFY
+//***************************
