@@ -65,6 +65,24 @@ header div h1 span {
     background-color: var(--secondary);
   }
 
+/* COCKTAIL DISPLAY STYLING */
+
+#drink-section img{
+  width: 25%;
+  height: auto;
+}
+
+#drink-section h4 {
+  text-align: auto;
+  font-weight: 100;
+}
+
+li {
+  list-style-type: none;
+}
+
+
+
 /* FOOTER STYLING */
 footer {
     background: var(--pirmary);

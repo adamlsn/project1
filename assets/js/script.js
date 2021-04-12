@@ -46,6 +46,8 @@ $("#tequila").click(function(){
   selectPlaylist(spirit);
 });
 
+
+
 //GENERATE COCKTAIL FUNCTION
 function generateCocktail(spirit){
 	fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + spirit)
@@ -92,7 +94,37 @@ function appendCocktail(drinkId){
 
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
-        console.log("function called.");
+        console.log("Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function")
+        
+        console.log(data);
+        console.log(data.drinks[0].strDrink);
+
+        let drinkSection = document.querySelector('#drink-section');
+        
+        document.getElementById('drink-section').innerHTML = "";
+
+        let drinkInfo = document.createElement('h4');
+        drinkInfo.innerHTML = data.drinks[0].strDrink;
+
+        drinkSection.appendChild(drinkInfo);
+
+        let img = document.createElement('img');
+        img.src = data.drinks[0].strDrinkThumb;
+
+        drinkSection.appendChild(img);
+
+        for(let i=1; i<16; i++){
+          console.log(i);
+          
+          // let quantity = "";
+          let ingredient = document.createElement('li');
+          ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
+      
+          drinkSection.appendChild(ingredient);
+          if(data.drinks[0][`strMeasure${i + 1}` ] === null) {
+            return;
+          }
+        }
       });
     }
   )
