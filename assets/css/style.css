@@ -10,6 +10,11 @@
     --secondary: #D6ED17FF;
 }
 
+body, html{
+  background: #B3B492
+}
+
+
 /* HEADER STYLING */
 header div {
     background: var(--pirmary);
@@ -21,8 +26,12 @@ header div h1 {
 }
 
 header div h1 span {
-    color: white;
+    color: var(--secondary);
 }
+
+/*BODY TEXT STYLING */
+
+
 
 /* DROPDOWN STYLING  */
 .dropbtn {
@@ -72,6 +81,7 @@ header div h1 span {
   height: auto;
 }
 
+
 #drink-section h4 {
   text-align: auto;
   font-weight: 100;
@@ -106,9 +116,13 @@ footer a {
 #trueBtn{
     margin: 10px;
     width: 50px;
+    background-color: var(--pirmary);
+    color: var(--secondary);
 }
 
 #falseBtn{
     margin: 10px;
     width: 50px;
+    background-color: var(--pirmary);
+    color: var(--secondary);
 }
