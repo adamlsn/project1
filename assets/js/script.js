@@ -335,6 +335,30 @@ function selectPlaylist(spirit) {
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
 
+$(document).ready(function(){
+  const API_KEY = "AIzaSyAbjxFfu3R6RzcfKRxb49b5lc2Kh9tKUFA"
 
+  var video = ''
+  
+  $("form").submit(function(event){
+    event.preventDefault()
+    var search = $("#search").val();
+    videoSearch(API_KEY,search);
+  })
+  function videoSearch(key,search,maxResults){
+    $.get("https://www.googleapis.com/youtube/v3/search?key="+ key + "&type=video&part=snippet&maxResults"+ maxResults +"&q=" + search,function(data){
+      console.log(data)
+      data.items.forEach(item => {
+        video = ` 
+        <iframe width="420" height="315" src="http://youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+
+        `
+        
+        $("#videos").append(video)
+      })
+    })
+  }
+})
+  
 
 
