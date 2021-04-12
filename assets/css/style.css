@@ -29,8 +29,6 @@ header div h1 span {
     color: var(--secondary);
 }
 
-/*BODY TEXT STYLING */
-
 
 
 /* DROPDOWN STYLING  */
@@ -84,7 +82,7 @@ header div h1 span {
 
 #drink-section h4 {
   text-align: auto;
-  font-weight: 100;
+  font-weight: bold;
 }
 
 li {
@@ -111,6 +109,18 @@ footer a {
     margin: 20px;
     display: flex;
     justify-content: center;
+}
+
+.intro{
+  font-weight: bold;
+}
+
+.answerFeedback {
+  font-weight: bold;
+}
+
+.currentScore {
+  font-weight: bold;
 }
 
 #trueBtn{
