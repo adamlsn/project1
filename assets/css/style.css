@@ -123,6 +123,11 @@ footer a {
   font-weight: bold;
 }
 
+.trivia-start {
+  background-color: var(--pirmary);
+  color: var(--secondary);
+}
+
 #trueBtn{
     margin: 10px;
     width: 50px;
