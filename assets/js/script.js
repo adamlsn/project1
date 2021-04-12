@@ -110,17 +110,22 @@ function appendCocktail(drinkId, drinkName){
 
         for(let i=1; i<16; i++){
           console.log(i);
-      
-          let ingredient = document.createElement('li');
-          ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
-      
-          drinkSection.appendChild(ingredient);
-        }
-        const drinkImage = document.getElementById("cocktail-img")
-        
-        const strIngredient1 = $("<li>").text(drink.ingredients); 
-        $(".cocktail-img").appendChild(strIngredient1);
+          
+          let quantity = "";
+          let ingredient = "";
+          let listItem = document.createElement('li');
+          ingredient = ingredient.innerHTML = data.drinks[0][`strIngredient${i}`];
+          console.log(ingredient);
+          quantity = quantity.innerHTML = data.drinks[0][`strMeasure${i}`];
+          console.log(quantity);
+          listItem = quantity + ingredient;
+          console.log(listItem);
+          // console.log(quantity, ingredient);
 
+      
+          drinkSection.appendChild(listItem);
+          // console.log(ingredient);
+        }
       });
     }
   )

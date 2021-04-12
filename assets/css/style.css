@@ -77,6 +77,10 @@ header div h1 span {
   font-weight: 100;
 }
 
+li {
+  list-style-type: none;
+}
+
 
 
 /* FOOTER STYLING */
