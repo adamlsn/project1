@@ -90,8 +90,25 @@ footer {
     width: 100%;
     position:static;
     text-decoration: none;
+    
+}
+footer a {
+  color: var(--secondary);
 }
 
-footer a {
-    color: var(--secondary);
+/* START OF TRIVIA STYLING */
+.trivia-container{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#trueBtn{
+    margin: 10px;
+    width: 50px;
+}
+
+#falseBtn{
+    margin: 10px;
+    width: 50px;
 }
