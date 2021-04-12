@@ -25,9 +25,10 @@ function reset(){
     score=0;
     triviaIndex=0;
 }
-var questionArrayLength = 10; //var to pass through url on count of trivia questions
+//var questionArrayLength = document.getElementById("triviaLength"); //var to pass through url on count of trivia questions
+var questionArrayLength = 10;
 var timer =1;//timer for allowing feedback to be displayed for user to see correct vs incorrect response
-
+var triviaDifficultyEl = document.getElementById("triviaDifficulty")
 
 
 
@@ -38,12 +39,24 @@ function startTrivia() {
     //remove start trivia button
     //startTriviaBtn.parentNode.removeChild(startTriviaBtn);
     reset();
-    startTriviaBtn.style.visibility="hidden";
+    startTriviaBtn.style.display="none";
     questionsEl.innerHTML='';
     answerFeedback.innerHTML='';
     introEl.innerHTML='';
     currentScore.innerHTML='';
 
+    // var triviaDifficultyDropDown=document.createElement('button');
+    // triviaDifficultyDropDown.id='dropbtn';
+    // triviaDifficultyDropDown.textContent='Difficulty';
+    // triviaDifficultyDropDown.className="dropbtn";
+    // triviaDifficultyEl.appendChild(triviaDifficultyDropDown);
+    
+    // var triviaQuestionLimit=document.createElement('button');
+    // triviaQuestionLimit.id='dropbtn';
+    // triviaQuestionLimit.textContent='Amount of Questions';
+    // triviaQuestionLimit.className="dropbtn";
+    // questionArrayLength.appendChild(triviaQuestionLimit);
+    gameBegin();
 };
 
 function gameBegin(){
@@ -89,7 +102,7 @@ function countDown(){
             answerFeedback.innerHTML=''
             resultLoop();
         }
-    },500);            
+    },600);            
 }
 
 function resultLoop(){
@@ -183,7 +196,7 @@ function checkAnswer(){
         currentScore.innerHTML=''
         trueBtn.parentNode.removeChild(trueBtn);
         falseBtn.parentNode.removeChild(falseBtn);
-        document.getElementById("start").style.visibility="visible";
+        document.getElementById("start").style.display="block";
     }
    }
 
