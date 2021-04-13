@@ -30,7 +30,7 @@ header div h1 {
 header div h1 span {
     color: var(--secondary);
 }
-
+/* END OF HEADER STYLING */
 
 /* DROPDOWN STYLING  */
 .dropbtn {
@@ -73,6 +73,8 @@ header div h1 span {
     background-color: var(--secondary);
   }
 
+/* END OF DROPDOWN STYLING */
+
 /* COCKTAIL DISPLAY STYLING */
 
 #drink-section img{
@@ -91,6 +93,7 @@ li {
   list-style-type: none;
 }
 
+/* END OF COCKTAIL DISPLAY SETTING */
 
 
 /* FOOTER STYLING */
@@ -109,6 +112,7 @@ footer a {
 footer p {
   color: var(--secondary);
 }
+/* END OF FOOTER STYLING */
 
 /* START OF TRIVIA STYLING */
 .trivia-container{
@@ -148,3 +152,4 @@ footer p {
     background-color: var(--pirmary);
     color: var(--secondary);
 }
+/* END OF TRIVIA STYLING */
