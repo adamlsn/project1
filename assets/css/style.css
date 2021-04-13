@@ -159,18 +159,6 @@ footer p {
 /* END OF TRIVIA STYLING */
 
 /* START OF MODAL STYLING */
-.button {
-  background: #428bca;
-  padding: 1em 2em;
-  color: #fff;
-  border: 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background: #3876ac;
-}
 
 .modal {
   display: none;
@@ -184,7 +172,7 @@ footer p {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-content {
+.modal-info {
   margin: 10% auto;
   width: 60%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);

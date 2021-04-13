@@ -454,15 +454,14 @@ function selectPlaylist(spirit) {
 }
 
 // MODAL SCRIPT
-// Get DOM Elements
+// DOM ELEMENTS
 const modal = document.querySelector('#site-modal');
-const modalBtn = document.querySelector('#modal-btn');
 const closeBtn = document.querySelector('.close');
-// Events
+// EVENTS
 window.addEventListener('load', openModal);
 closeBtn.addEventListener('click', closeModal);
 window.addEventListener('click', outsideClick);
-// Open
+// OPEN LOAD MODAL
 function openModal() {
   //modal.style.display = 'block';
   if(localStorage.getItem("newUser")==='null'){
@@ -473,11 +472,11 @@ function openModal() {
   if(localStorage.getItem("newUser")==='no'){
     modal.style.display = 'none';
 }
-// Close
+// CLOSE MODAL
 function closeModal() {
   modal.style.display = 'none';
 }
-// Close If Outside Click
+// CLOSE MODAL IF OUTSIDE CLICK
 function outsideClick(e) {
   if (e.target == modal) {
     modal.style.display = 'none';
