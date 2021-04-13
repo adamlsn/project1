@@ -119,6 +119,9 @@ footer p {
     margin: 20px;
     display: flex;
     justify-content: center;
+    border-width: 50%;
+    border-color: var(--pirmary);
+    border-style: solid;
 }
 
 .intro{
@@ -153,3 +156,30 @@ footer p {
     color: var(--secondary);
 }
 /* END OF TRIVIA STYLING */
+
+/* START OF MODAL STYLING */
+#popup-box{
+	width: 400px;
+	height: 250px;
+	background: #03a9f4;
+	box-sizing: border-box;
+	padding: 10px;
+	position: fixed;
+	top: calc(50% - 125px);
+	left: calc(50% - 200px);
+	box-shadow: 0px 0px 5px 0px #7f7c7c;
+	display: none;
+}
+#popup-box .top-bar{
+	width: 100%;
+	background: red;
+	position: relative;
+}
+#popup-box .top-bar #close-button{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+#popup-box .content{
+	width: 100%;
+}
