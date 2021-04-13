@@ -28,7 +28,9 @@ function reset(){
 //var questionArrayLength = document.getElementById("triviaLength"); //var to pass through url on count of trivia questions
 var questionArrayLength = 10;
 var timer =1;//timer for allowing feedback to be displayed for user to see correct vs incorrect response
-var triviaDifficultyEl = document.getElementById("triviaDifficulty")
+var triviaDifficultyEl = document.getElementById("triviaDifficulty");
+var triviaCategoryEl = document.getElementById("triviaCategory");
+var triviaStartQuestionsEL = document.getElementById("trivia-start-questions");
 
 
 
@@ -40,23 +42,65 @@ function startTrivia() {
     //startTriviaBtn.parentNode.removeChild(startTriviaBtn);
     reset();
     startTriviaBtn.style.display="none";
-    questionsEl.innerHTML='';
-    answerFeedback.innerHTML='';
-    introEl.innerHTML='';
-    currentScore.innerHTML='';
+    questionsEl.innerHTML="";
+    answerFeedback.innerHTML="";
+    introEl.innerHTML="";
+    currentScore.innerHTML="";
 
-    // var triviaDifficultyDropDown=document.createElement('button');
-    // triviaDifficultyDropDown.id='dropbtn';
-    // triviaDifficultyDropDown.textContent='Difficulty';
-    // triviaDifficultyDropDown.className="dropbtn";
-    // triviaDifficultyEl.appendChild(triviaDifficultyDropDown);
+    var triviaDifficultyDropDown=document.createElement("button");
+    triviaDifficultyDropDown.id="dropbtn";
+    triviaDifficultyDropDown.textContent="Difficulty";
+    triviaDifficultyDropDown.className="dropbtn";
+    triviaDifficultyEl.appendChild(triviaDifficultyDropDown);
     
-    // var triviaQuestionLimit=document.createElement('button');
-    // triviaQuestionLimit.id='dropbtn';
-    // triviaQuestionLimit.textContent='Amount of Questions';
-    // triviaQuestionLimit.className="dropbtn";
-    // questionArrayLength.appendChild(triviaQuestionLimit);
-    gameBegin();
+    var triviaCategoryDropDown=document.createElement("button");
+    triviaCategoryDropDown.id="dropbtn";
+    triviaCategoryDropDown.textContent="Category";
+    triviaCategoryDropDown.className="dropbtn";
+    triviaCategoryEl.appendChild(triviaCategoryDropDown);
+
+    $("#easy").click(function(){
+      triviaDifficultyDropDown.innerHTML="Easy"
+    });
+
+    $("#medium").click(function(){
+      triviaDifficultyDropDown.innerHTML="Medium"
+    });
+
+    $("#hard").click(function(){
+      triviaDifficultyDropDown.innerHTML="Hard"
+    });
+
+    $("#9").click(function(){
+      triviaCategoryDropDown.innerHTML="General Knowledge"
+    });
+
+    $("#21").click(function(){
+      triviaCategoryDropDown.innerHTML="Sports"
+    });
+
+    $("#23").click(function(){
+      triviaCategoryDropDown.innerHTML="History"
+    });
+    
+    var triviaVarSubmit = document.createElement("button");
+    triviaVarSubmit.id="trivia-submit";
+    triviaVarSubmit.textContent="submit";
+    triviaVarSubmit.className="dropbtn"
+    triviaStartQuestionsEL.appendChild(triviaVarSubmit);
+
+    triviaVarSubmit.addEventListener("click", function () {
+      if (triviaCategoryDropDown.innerHTML==="Category" || triviaDifficultyDropDown.innerHTML==="Difficulty"){
+
+      }
+      else {
+        triviaVarSubmit.parentElement.removeChild(triviaVarSubmit)
+        triviaCategoryDropDown.parentElement.removeChild(triviaCategoryDropDown)
+        triviaDifficultyDropDown.parentElement.removeChild(triviaDifficultyDropDown)
+        gameBegin();
+      }
+    })
+
 };
 
 function gameBegin(){
@@ -64,13 +108,13 @@ function gameBegin(){
         triviaAPI();
         
         //add true button    
-        var answerTrue = document.createElement('button');
-        answerTrue.id = 'trueBtn';
+        var answerTrue = document.createElement("button");
+        answerTrue.id = "trueBtn";
         answerTrue.textContent = "True";
         triviaEl.appendChild(answerTrue);
         //add false button
-        var answerFalse = document.createElement('button');
-        answerFalse.id = 'falseBtn';
+        var answerFalse = document.createElement("button");
+        answerFalse.id = "falseBtn";
         answerFalse.textContent = "False";
         triviaEl.appendChild(answerFalse);
     
