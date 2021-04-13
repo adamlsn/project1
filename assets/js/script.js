@@ -6,7 +6,7 @@ let spirit = "";
 let drinkName= "";
 let drinkId = "";
 
-//trivia
+//trivia global variables
 var startTriviaBtn = document.getElementById("start") //initial screen start trivia game button
 var triviaEl = document.getElementById("trivia"); //set var to trivia container
 var introEl = document.getElementById("intro"); //set var to text field for displaying intro question
@@ -20,36 +20,120 @@ var triviaIndex = 0; //for the position in array
 var answerFeedback = document.getElementById("answerFeedback"); //for setting the answerFeedback field as var to display feedback on users answer to question
 var currentScore = document.getElementById("currentScore"); //for setting the text on the page for the current score
 var apiResults; 
-var score =0;
-var questionArrayLength = 10; //var to pass through url on count of trivia questions
-var timer =2;//timer for allowing feedback to be displayed for user to see correct vs incorrect response
-
-console.log(triviaIndex)
+var score =0 ;
+function reset(){
+    score=0;
+    triviaIndex=0;
+}
+//var questionArrayLength = document.getElementById("triviaLength"); //var to pass through url on count of trivia questions
+var questionArrayLength = 10;
+var timer =1;//timer for allowing feedback to be displayed for user to see correct vs incorrect response
+var triviaDifficultyEl = document.getElementById("triviaDifficulty");
+var triviaCategoryEl = document.getElementById("triviaCategory");
+var triviaStartQuestionsEL = document.getElementById("trivia-start-questions");
 
 //***************************
 //START OF TRIVIA
 //***************************
 function startTrivia() {
     //remove start trivia button
-    startTriviaBtn.parentNode.removeChild(startTriviaBtn);
-    introEl.innerHTML='';
+    //startTriviaBtn.parentNode.removeChild(startTriviaBtn);
 
-    //add question   
-    triviaAPI();
-        
-    //add true button    
-    var answerTrue = document.createElement('button');
-    answerTrue.id = 'trueBtn';
-    answerTrue.textContent = "True";
-    triviaEl.appendChild(answerTrue);
-    //add false button
-    var answerFalse = document.createElement('button');
-    answerFalse.id = 'falseBtn';
-    answerFalse.textContent = "False";
-    triviaEl.appendChild(answerFalse);
+    //reset index start and score to 0
+    reset();
 
-    checkAnswer();
+    //clear text fields for replay
+    startTriviaBtn.style.display="none";
+    questionsEl.innerHTML="";
+    answerFeedback.innerHTML="";
+    introEl.innerHTML="";
+    currentScore.innerHTML="";
+
+    //create difficulty button
+    var triviaDifficultyDropDown=document.createElement("button");
+    triviaDifficultyDropDown.id="dropbtn";
+    triviaDifficultyDropDown.textContent="Difficulty";
+    triviaDifficultyDropDown.className="dropbtn";
+    triviaDifficultyEl.appendChild(triviaDifficultyDropDown);
+
+    //create category button
+    var triviaCategoryDropDown=document.createElement("button");
+    triviaCategoryDropDown.id="dropbtn";
+    triviaCategoryDropDown.textContent="Category";
+    triviaCategoryDropDown.className="dropbtn";
+    triviaCategoryEl.appendChild(triviaCategoryDropDown);
+
+    //check dropdown selected from difficulty button
+    $("#easy").click(function(){
+      triviaDifficultyDropDown.innerHTML="Easy"
+      triviaDifficultyDropDown.id="easy"
+    });
+
+    $("#medium").click(function(){
+      triviaDifficultyDropDown.innerHTML="Medium"
+      triviaDifficultyDropDown.id="medium"
+    });
+
+    $("#hard").click(function(){
+      triviaDifficultyDropDown.innerHTML="Hard"
+      triviaDifficultyDropDown.id="hard"
+    });
+
+    //check dropdown selected from category button
+    $("#9").click(function(){
+      triviaCategoryDropDown.innerHTML="General Knowledge"
+      triviaCategoryDropDown.id="9"
+    });
+
+    $("#21").click(function(){
+      triviaCategoryDropDown.innerHTML="Sports"
+      triviaCategoryDropDown.id="21"
+    });
+
+    $("#23").click(function(){
+      triviaCategoryDropDown.innerHTML="History"
+      triviaCategoryDropDown.id="23"
+    });
+
+    //create submit button
+    var triviaVarSubmit = document.createElement("button");
+    triviaVarSubmit.id="trivia-submit";
+    triviaVarSubmit.textContent="submit";
+    triviaVarSubmit.className="dropbtn"
+    triviaStartQuestionsEL.appendChild(triviaVarSubmit);
+
+    //check that user picked a category and difficulty
+    triviaVarSubmit.addEventListener("click", function () {
+      if (triviaCategoryDropDown.innerHTML==="Category" || triviaDifficultyDropDown.innerHTML==="Difficulty"){
+        //nothing happens if both buttons aren't modified
+      }
+      else {
+        triviaVarSubmit.parentElement.removeChild(triviaVarSubmit)
+        triviaCategoryDropDown.parentElement.removeChild(triviaCategoryDropDown)
+        triviaDifficultyDropDown.parentElement.removeChild(triviaDifficultyDropDown)
+        gameBegin();
+      }
+    })
+
 };
+
+function gameBegin(){
+        //add question   
+        triviaAPI();
+        
+        //add true button    
+        var answerTrue = document.createElement("button");
+        answerTrue.id = "trueBtn";
+        answerTrue.textContent = "True";
+        triviaEl.appendChild(answerTrue);
+        //add false button
+        var answerFalse = document.createElement("button");
+        answerFalse.id = "falseBtn";
+        answerFalse.textContent = "False";
+        triviaEl.appendChild(answerFalse);
+    
+        checkAnswer();
+}
 
 //trivia API fetch and store 
 function triviaAPI(){
@@ -76,7 +160,7 @@ function countDown(){
             answerFeedback.innerHTML=''
             resultLoop();
         }
-    },1000);            
+    },600);            
 }
 
 function resultLoop(){
@@ -131,6 +215,13 @@ function checkAnswer(){
         }
     }
 
+    
+    
+    $("#trueBtn").click(function() {
+        var that = this;
+        $(this).attr("disabled", true);
+        setTimeout(function() { enableSubmit(that) }, 1000);
+    });
    
    function gameResults(){
     falseBtn.innerHTML="I'm Done";
@@ -151,7 +242,9 @@ function checkAnswer(){
     }
     //function for user playing another round
     document.getElementById("trueBtn").onclick = function(){
-
+        trueBtn.parentNode.removeChild(trueBtn);
+        falseBtn.parentNode.removeChild(falseBtn);
+        startTrivia();
     }
     //function for user being done playing game
     document.getElementById("falseBtn").onclick = function(){
@@ -161,11 +254,7 @@ function checkAnswer(){
         currentScore.innerHTML=''
         trueBtn.parentNode.removeChild(trueBtn);
         falseBtn.parentNode.removeChild(falseBtn);
-        var startTriviaBtn = document.createElement('button');
-        startTriviaBtn.id = 'start';
-        startTriviaBtn.textContent = "Start trivia";
-        triviaEl.appendChild(startTriviaBtn);
-
+        document.getElementById("start").style.display="block";
     }
    }
 
@@ -270,24 +359,28 @@ function appendCocktail(drinkId){
         document.getElementById('drink-section').innerHTML = "";
 
         let drinkInfo = document.createElement('h4');
+        drinkInfo.classList.add("py-1");
+        drinkInfo.classList.add("is-size-4");
         drinkInfo.innerHTML = data.drinks[0].strDrink;
 
         drinkSection.appendChild(drinkInfo);
 
         let img = document.createElement('img');
         img.src = data.drinks[0].strDrinkThumb;
+        img.classList.add("py-2")
 
         drinkSection.appendChild(img);
 
         for(let i=1; i<16; i++){
-          console.log(i);
-          
-          // let quantity = "";
           let ingredient = document.createElement('li');
           ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
           if(data.drinks[0][`strMeasure${i + 1}` ] === null) {
+            let description = document.createElement("p");
+            description.innerHTML = data.drinks[0].strInstructions;
+            description.classList.add("pt-3");
+            drinkSection.appendChild(description);
             return;
           }
         }
@@ -312,22 +405,51 @@ function appendCocktail(drinkId){
 
 function selectPlaylist(spirit) {
   let openingUrl = "https://open.spotify.com/embed/playlist/";
+  let i = Math.floor(Math.random() * 3);
+  console.log(i);
+  let randomUrl = [];
   let playlistUrl = ""
   if (spirit === "Bourbon") {
-    playlistUrl = "37i9dQZF1DX3Fzl4v4w9Zp";
+    randomUrl = [
+      "37i9dQZF1DX3Fzl4v4w9Zp",
+      "37i9dQZF1DX2taNm7KfjOX",
+      "37i9dQZF1DXat5j4Lk8UEj"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Rum") {
-    playlistUrl = "37i9dQZF1DX83I5je4W4rP";
+    randomUrl = [
+      "37i9dQZF1DX83I5je4W4rP",
+      "37i9dQZF1DX4Y4RhrZqHhr",
+      "37i9dQZF1DX6RA5ZrA5a23"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Vodka") {
-    playlistUrl = "37i9dQZF1DWXRqgorJj26U";
+    randomUrl = [
+      "37i9dQZF1DWXRqgorJj26U",
+      "37i9dQZF1DXdmXczhgY3oW",
+      "37i9dQZEVXbMDoHDwVN2tF"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Gin") {
-    playlistUrl = "37i9dQZF1DWV7EzJMK2FUI";
+    randomUrl = [
+      "37i9dQZF1DWV7EzJMK2FUI",
+      "37i9dQZF1DXd9rSDyQguIk",
+      "37i9dQZF1DXdwTUxmGKrdN"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Tequila") {
-    playlistUrl = "37i9dQZF1DXa2PvUpywmrr";
+    randomUrl = [
+      "37i9dQZF1DXa2PvUpywmrr",
+      "37i9dQZEVXbLRQDuF5jeBp",
+      "37i9dQZF1DWUa8ZRTfalHk"
+    ]
+    playlistUrl = randomUrl[i];
   };
+  console.log(randomUrl[i]);
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
 
