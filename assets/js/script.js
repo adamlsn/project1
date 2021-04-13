@@ -453,19 +453,33 @@ function selectPlaylist(spirit) {
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
 
-
-// auto show modal
-// call the fucntion after 3 sec
-setTimeout(show_modal, 3000);
-// auto close modal after 6 sec
-// call the fucntion after 6 sec
-setTimeout(close_modal, 6000);
-// so modal will stay 3 sec 
- function show_modal(){
- 	 var popup_box = document.getElementById('popup-box');
- 	 popup_box.style.display = "block";
- }
- function close_modal(){
- 	 var popup_box = document.getElementById('popup-box');
- 	 popup_box.style.display = "none";
- }
+// MODAL SCRIPT
+// Get DOM Elements
+const modal = document.querySelector('#site-modal');
+const modalBtn = document.querySelector('#modal-btn');
+const closeBtn = document.querySelector('.close');
+// Events
+window.addEventListener('load', openModal);
+closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', outsideClick);
+// Open
+function openModal() {
+  //modal.style.display = 'block';
+  if(localStorage.getItem("newUser")==='null'){
+    modal.style.display = 'block';
+    localStorage.setItem("newUser", 'no')
+  }
+}
+  if(localStorage.getItem("newUser")==='no'){
+    modal.style.display = 'none';
+}
+// Close
+function closeModal() {
+  modal.style.display = 'none';
+}
+// Close If Outside Click
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+}

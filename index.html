@@ -30,19 +30,31 @@
     </header>
 
     <main>
-      <div id="popup-box">
-        <div class="top-bar">
-          <button onclick="close_modal()" id="close-button">X</button>
-        </div>
-        <div class="content">
-            <h2>
-              this is popup message box
-            </h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores laboriosam vero at rem molestiae quo rerum, alias est consequuntur consectetur debitis voluptates, dolorum incidunt sunt eveniet qui velit ducimus minus.
-          </p>
-        </div>
+
+  <div id="site-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Welcome to Songs & Spirits!</h2>
       </div>
+      <div class="modal-body">
+        <p>Guide to our site:
+
+        </p>
+        <br>
+        <p>
+          <ul>
+            <li>Step 1: Pick a cocktail from the listed liquor types!</li><br>
+            <li>Step 2: Select a song from the generated playlist!</li><br>
+            <li>Step 3: Test your knowledge with the Trivia!</li>
+          </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <h3>Happy Drinking!</h3>
+      </div>
+    </div>
+  </div>
       
       <section class="columns is-desktop is-centered">
         <div class="column is-centered has-text-centered">
@@ -86,11 +98,7 @@
       </section>
       <!-- Spotify Output ends -->
     </main>
-<<<<<<< HEAD
-    <!-- Trivia Content Begins -->
-=======
     <!-- Start of Trivia -->
->>>>>>> cfb8c3aa9ea42b5e77c80ce11e8ed8faf139e50f
     <div class="trivia-container rows">
       <div class="trivia row" id="trivia">
         <section class="trivia-start-questions" id="trivia-start-questions">

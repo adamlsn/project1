@@ -122,6 +122,7 @@ footer p {
     border-width: 50%;
     border-color: var(--pirmary);
     border-style: solid;
+    background-color: var(--third);
 }
 
 .intro{
@@ -158,28 +159,85 @@ footer p {
 /* END OF TRIVIA STYLING */
 
 /* START OF MODAL STYLING */
-#popup-box{
-	width: 400px;
-	height: 250px;
-	background: #03a9f4;
-	box-sizing: border-box;
-	padding: 10px;
-	position: fixed;
-	top: calc(50% - 125px);
-	left: calc(50% - 200px);
-	box-shadow: 0px 0px 5px 0px #7f7c7c;
-	display: none;
+.button {
+  background: #428bca;
+  padding: 1em 2em;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
 }
-#popup-box .top-bar{
-	width: 100%;
-	background: red;
-	position: relative;
+
+.button:hover {
+  background: #3876ac;
 }
-#popup-box .top-bar #close-button{
-	position: absolute;
-	top: 0px;
-	right: 0px;
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-#popup-box .content{
-	width: 100%;
+
+.modal-content {
+  margin: 10% auto;
+  width: 60%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-header h2,
+.modal-footer h3 {
+  margin: 0;
+}
+
+.modal-header {
+  background: var(--pirmary);
+  padding: 15px;
+  color: var(--secondary);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-body {
+  padding: 10px 20px;
+  background: #fff;
+}
+
+.modal-footer {
+  background: var(--secondary);
+  padding: 10px;
+  color: var(--pirmary);
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.close {
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+  color: #fff;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
