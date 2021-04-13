@@ -291,6 +291,13 @@ function appendCocktail(drinkId){
             return;
           }
         }
+        let instruction = document.createElement('li');
+        instruction.innerHTML = data.drinks[0].strInstructions;
+
+        console.log(instruction);
+
+        drinkSection.appendChild(instruction);
+
       });
     }
   )

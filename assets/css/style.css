@@ -6,12 +6,14 @@
 
 /* COLORS */
 :root {
-    --pirmary: #606060ff;
-    --secondary: #D6ED17FF;
+    --pirmary: #191414;
+    --secondary: #1ed760;
+    --third: #1db954;
+    --fourth: #ffffff;
 }
 
 body, html{
-  background: #B3B492
+  background: #b3b3b3;
 }
 
 
@@ -28,7 +30,6 @@ header div h1 {
 header div h1 span {
     color: var(--secondary);
 }
-
 
 
 /* DROPDOWN STYLING  */
@@ -83,6 +84,7 @@ header div h1 span {
 #drink-section h4 {
   text-align: auto;
   font-weight: bold;
+  color: var(--pirmary);
 }
 
 li {
@@ -104,6 +106,10 @@ footer a {
   color: var(--secondary);
 }
 
+footer p {
+  color: var(--secondary);
+}
+
 /* START OF TRIVIA STYLING */
 .trivia-container{
     margin: 20px;
@@ -113,6 +119,7 @@ footer a {
 
 .intro{
   font-weight: bold;
+  color: var(--pirmary)
 }
 
 .answerFeedback {
