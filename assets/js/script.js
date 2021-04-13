@@ -270,24 +270,28 @@ function appendCocktail(drinkId){
         document.getElementById('drink-section').innerHTML = "";
 
         let drinkInfo = document.createElement('h4');
+        drinkInfo.classList.add("py-1");
+        drinkInfo.classList.add("is-size-4");
         drinkInfo.innerHTML = data.drinks[0].strDrink;
 
         drinkSection.appendChild(drinkInfo);
 
         let img = document.createElement('img');
         img.src = data.drinks[0].strDrinkThumb;
+        img.classList.add("py-2")
 
         drinkSection.appendChild(img);
 
         for(let i=1; i<16; i++){
-          console.log(i);
-          
-          // let quantity = "";
           let ingredient = document.createElement('li');
           ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
           if(data.drinks[0][`strMeasure${i + 1}` ] === null) {
+            let description = document.createElement("p");
+            description.innerHTML = data.drinks[0].strInstructions;
+            description.classList.add("pt-3");
+            drinkSection.appendChild(description);
             return;
           }
         }
