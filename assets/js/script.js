@@ -26,19 +26,19 @@ function reset(){
     triviaIndex=0;
 }
 //var questionArrayLength = document.getElementById("triviaLength"); //var to pass through url on count of trivia questions
-var questionArrayLength = 10;
+var questionArrayLength = 10; //default question trivia length
 var timer =1;//timer for allowing feedback to be displayed for user to see correct vs incorrect response
-var triviaDifficultyEl = document.getElementById("triviaDifficulty");
+//var triviaDifficultyEl = document.getElementById("triviaDifficulty");
 var triviaCategoryEl = document.getElementById("triviaCategory");
 var triviaStartQuestionsEL = document.getElementById("trivia-start-questions");
+var triviaDifficultyDropDown; 
+var triviaCategoryDropDown;
+
 
 //***************************
 //START OF TRIVIA
 //***************************
 function startTrivia() {
-    //remove start trivia button
-    //startTriviaBtn.parentNode.removeChild(startTriviaBtn);
-
     //reset index start and score to 0
     reset();
 
@@ -49,35 +49,12 @@ function startTrivia() {
     introEl.innerHTML="";
     currentScore.innerHTML="";
 
-    //create difficulty button
-    var triviaDifficultyDropDown=document.createElement("button");
-    triviaDifficultyDropDown.id="dropbtn";
-    triviaDifficultyDropDown.textContent="Difficulty";
-    triviaDifficultyDropDown.className="dropbtn";
-    triviaDifficultyEl.appendChild(triviaDifficultyDropDown);
-
     //create category button
     var triviaCategoryDropDown=document.createElement("button");
     triviaCategoryDropDown.id="dropbtn";
     triviaCategoryDropDown.textContent="Category";
     triviaCategoryDropDown.className="dropbtn";
     triviaCategoryEl.appendChild(triviaCategoryDropDown);
-
-    //check dropdown selected from difficulty button
-    $("#easy").click(function(){
-      triviaDifficultyDropDown.innerHTML="Easy"
-      triviaDifficultyDropDown.id="easy"
-    });
-
-    $("#medium").click(function(){
-      triviaDifficultyDropDown.innerHTML="Medium"
-      triviaDifficultyDropDown.id="medium"
-    });
-
-    $("#hard").click(function(){
-      triviaDifficultyDropDown.innerHTML="Hard"
-      triviaDifficultyDropDown.id="hard"
-    });
 
     //check dropdown selected from category button
     $("#9").click(function(){
@@ -95,6 +72,11 @@ function startTrivia() {
       triviaCategoryDropDown.id="23"
     });
 
+    $("#14").click(function(){
+      triviaCategoryDropDown.innerHTML="History"
+      triviaCategoryDropDown.id="14"
+    });
+
     //create submit button
     var triviaVarSubmit = document.createElement("button");
     triviaVarSubmit.id="trivia-submit";
@@ -104,14 +86,29 @@ function startTrivia() {
 
     //check that user picked a category and difficulty
     triviaVarSubmit.addEventListener("click", function () {
-      if (triviaCategoryDropDown.innerHTML==="Category" || triviaDifficultyDropDown.innerHTML==="Difficulty"){
+
+
+      if (triviaCategoryDropDown.innerHTML==="Category" ){
         //nothing happens if both buttons aren't modified
       }
       else {
+        
+        fetch(`https://opentdb.com/api.php?amount=10&category=${triviaCategoryDropDown.id}&type=boolean`).then(function (response) {
+          console.log(response);
+          return response.json();
+          })
+          .then(function(response){
+              console.log(response.results[triviaIndex])
+              console.log(response.results);
+              apiResults=response.results;
+              console.log(triviaAnswer)
+              resultLoop();
+          });
         triviaVarSubmit.parentElement.removeChild(triviaVarSubmit)
         triviaCategoryDropDown.parentElement.removeChild(triviaCategoryDropDown)
-        triviaDifficultyDropDown.parentElement.removeChild(triviaDifficultyDropDown)
-        gameBegin();
+        //triviaDifficultyDropDown.parentElement.removeChild(triviaDifficultyDropDown)
+          gameBegin();
+        
       }
     })
 
@@ -119,8 +116,7 @@ function startTrivia() {
 
 function gameBegin(){
         //add question   
-        triviaAPI();
-        
+                
         //add true button    
         var answerTrue = document.createElement("button");
         answerTrue.id = "trueBtn";
@@ -133,21 +129,6 @@ function gameBegin(){
         triviaEl.appendChild(answerFalse);
     
         checkAnswer();
-}
-
-//trivia API fetch and store 
-function triviaAPI(){
-    fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean").then(function (response) {
-    console.log(response);
-    return response.json();
-    })
-    .then(function(response){
-        console.log(response.results[triviaIndex])
-        console.log(response.results);
-        apiResults=response.results;
-        console.log(triviaAnswer)
-        resultLoop();
-    });
 }
 
 function countDown(){
