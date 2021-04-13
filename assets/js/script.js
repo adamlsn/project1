@@ -316,21 +316,50 @@ function appendCocktail(drinkId){
 
 function selectPlaylist(spirit) {
   let openingUrl = "https://open.spotify.com/embed/playlist/";
+  let i = Math.floor(Math.random() * 3);
+  console.log(i);
+  let randomUrl = [];
   let playlistUrl = ""
   if (spirit === "Bourbon") {
-    playlistUrl = "37i9dQZF1DX3Fzl4v4w9Zp";
+    randomUrl = [
+      "37i9dQZF1DX3Fzl4v4w9Zp",
+      "37i9dQZF1DX2taNm7KfjOX",
+      "37i9dQZF1DXat5j4Lk8UEj"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Rum") {
-    playlistUrl = "37i9dQZF1DX83I5je4W4rP";
+    randomUrl = [
+      "37i9dQZF1DX83I5je4W4rP",
+      "37i9dQZF1DX4Y4RhrZqHhr",
+      "37i9dQZF1DX6RA5ZrA5a23"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Vodka") {
-    playlistUrl = "37i9dQZF1DWXRqgorJj26U";
+    randomUrl = [
+      "37i9dQZF1DWXRqgorJj26U",
+      "37i9dQZF1DXdmXczhgY3oW",
+      "37i9dQZEVXbMDoHDwVN2tF"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Gin") {
-    playlistUrl = "37i9dQZF1DWV7EzJMK2FUI";
+    randomUrl = [
+      "37i9dQZF1DWV7EzJMK2FUI",
+      "37i9dQZF1DXd9rSDyQguIk",
+      "37i9dQZF1DXdwTUxmGKrdN"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Tequila") {
-    playlistUrl = "37i9dQZF1DXa2PvUpywmrr";
+    randomUrl = [
+      "37i9dQZF1DXa2PvUpywmrr",
+      "37i9dQZEVXbLRQDuF5jeBp",
+      "37i9dQZF1DWUa8ZRTfalHk"
+    ]
+    playlistUrl = randomUrl[i];
   };
+  console.log(randomUrl[i]);
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
