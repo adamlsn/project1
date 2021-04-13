@@ -12,6 +12,7 @@ let drinkId = "";
   },1000);
   $("#yes").on("click",function(){
      $(".modal").removeClass("is-active")
+     
   })
   $("#no").on("click",function(){
       $(".text").html("Sorry you should be 21 to enter this page.");
@@ -334,7 +335,7 @@ function selectPlaylist(spirit) {
   };
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
-
+//Youtube Api
 $(document).ready(function(){
   const API_KEY = "AIzaSyAbjxFfu3R6RzcfKRxb49b5lc2Kh9tKUFA"
 
@@ -342,7 +343,7 @@ $(document).ready(function(){
   
   $("form").submit(function(event){
     event.preventDefault()
-    var search = $("#search").val();
+    var search = $("#search").val()
     videoSearch(API_KEY,search);
   })
   function videoSearch(key,search,maxResults){
@@ -350,10 +351,8 @@ $(document).ready(function(){
       console.log(data)
       data.items.forEach(item => {
         video = ` 
-        <iframe width="420" height="315" src="http://youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
-
-        `
-        
+        <iframe width="300" height="380" src="http://youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+        ` 
         $("#videos").append(video)
       })
     })
