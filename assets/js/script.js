@@ -451,7 +451,7 @@ closeBtn.addEventListener('click', closeModal);
 window.addEventListener('click', outsideClick);
 // OPEN LOAD MODAL
 function openModal() {
-  //modal.style.display = 'block';
+  modal.style.display = 'block';
   if(localStorage.getItem("newUser")==='null'){
     modal.style.display = 'block';
     localStorage.setItem("newUser", 'no')
