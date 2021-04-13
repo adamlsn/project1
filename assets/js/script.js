@@ -73,8 +73,13 @@ function startTrivia() {
     });
 
     $("#14").click(function(){
-      triviaCategoryDropDown.innerHTML="History"
+      triviaCategoryDropDown.innerHTML="Entertainment: Television"
       triviaCategoryDropDown.id="14"
+    });
+
+    $("#18").click(function(){
+      triviaCategoryDropDown.innerHTML="Science: Computers"
+      triviaCategoryDropDown.id="18"
     });
 
     //create submit button
