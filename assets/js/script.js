@@ -6,13 +6,17 @@ let spirit = "";
 let drinkName= "";
 let drinkId = "";
 
-// Getting age of the user
+ //Getting age of the user and setting the user selections
     setTimeout(function(){
+     if(!localStorage.getItem('Yes')){
       $(".modal").addClass("is-active")
+     }
   },1000);
   $("#yes").on("click",function(){
-     $(".modal").removeClass("is-active")
-     
+    
+    localStorage.setItem('Yes',true);
+    
+   $(".modal").removeClass("is-active")   
   })
   $("#no").on("click",function(){
       $(".text").html("Sorry you should be 21 to enter this page.");
@@ -245,6 +249,10 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
+        const drinkSearch= $("input").html(drinkName);
+        
+        
+
         // console.log("DRINK NAME: " + drinkName);
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
@@ -335,19 +343,21 @@ function selectPlaylist(spirit) {
   };
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
+
+
 //Youtube Api
 $(document).ready(function(){
-  const API_KEY = "AIzaSyAbjxFfu3R6RzcfKRxb49b5lc2Kh9tKUFA"
+  const API_KEY = "AIzaSyAmFaBVys1owWwDZNgf7Da-mC_79ESpc0w"
 
   var video = ''
   
   $("form").submit(function(event){
     event.preventDefault()
     var search = $("#search").val()
-    videoSearch(API_KEY,search);
+    videoSearch(API_KEY,search,1);
   })
-  function videoSearch(key,search,maxResults){
-    $.get("https://www.googleapis.com/youtube/v3/search?key="+ key + "&type=video&part=snippet&maxResults"+ maxResults +"&q=" + search,function(data){
+    function videoSearch(key,search,maxResults){
+    $.get("https://www.googleapis.com/youtube/v3/search?key="+ key + "&type=video&part=snippet&rmaxResults"+ maxResults +"&q=" + search,function(data){
       console.log(data)
       data.items.forEach(item => {
         video = ` 
@@ -358,6 +368,7 @@ $(document).ready(function(){
     })
   }
 })
-  
+
+
 
 
