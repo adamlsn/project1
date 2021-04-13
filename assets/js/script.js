@@ -441,6 +441,8 @@ function selectPlaylist(spirit) {
 
 // MODAL SCRIPT
 // DOM ELEMENTS
+
+
 const modal = document.querySelector('#site-modal');
 const closeBtn = document.querySelector('.close');
 // EVENTS
