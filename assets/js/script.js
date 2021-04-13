@@ -345,27 +345,38 @@ function appendCocktail(drinkId){
         document.getElementById('drink-section').innerHTML = "";
 
         let drinkInfo = document.createElement('h4');
+        drinkInfo.classList.add("py-1");
+        drinkInfo.classList.add("is-size-4");
         drinkInfo.innerHTML = data.drinks[0].strDrink;
 
         drinkSection.appendChild(drinkInfo);
 
         let img = document.createElement('img');
         img.src = data.drinks[0].strDrinkThumb;
+        img.classList.add("py-2")
 
         drinkSection.appendChild(img);
 
         for(let i=1; i<16; i++){
-          console.log(i);
-          
-          // let quantity = "";
           let ingredient = document.createElement('li');
           ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
           if(data.drinks[0][`strMeasure${i + 1}` ] === null) {
+            let description = document.createElement("p");
+            description.innerHTML = data.drinks[0].strInstructions;
+            description.classList.add("pt-3");
+            drinkSection.appendChild(description);
             return;
           }
         }
+        let instruction = document.createElement('li');
+        instruction.innerHTML = data.drinks[0].strInstructions;
+
+        console.log(instruction);
+
+        drinkSection.appendChild(instruction);
+
       });
     }
   )
@@ -380,21 +391,50 @@ function appendCocktail(drinkId){
 
 function selectPlaylist(spirit) {
   let openingUrl = "https://open.spotify.com/embed/playlist/";
+  let i = Math.floor(Math.random() * 3);
+  console.log(i);
+  let randomUrl = [];
   let playlistUrl = ""
   if (spirit === "Bourbon") {
-    playlistUrl = "37i9dQZF1DX3Fzl4v4w9Zp";
+    randomUrl = [
+      "37i9dQZF1DX3Fzl4v4w9Zp",
+      "37i9dQZF1DX2taNm7KfjOX",
+      "37i9dQZF1DXat5j4Lk8UEj"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Rum") {
-    playlistUrl = "37i9dQZF1DX83I5je4W4rP";
+    randomUrl = [
+      "37i9dQZF1DX83I5je4W4rP",
+      "37i9dQZF1DX4Y4RhrZqHhr",
+      "37i9dQZF1DX6RA5ZrA5a23"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Vodka") {
-    playlistUrl = "37i9dQZF1DWXRqgorJj26U";
+    randomUrl = [
+      "37i9dQZF1DWXRqgorJj26U",
+      "37i9dQZF1DXdmXczhgY3oW",
+      "37i9dQZEVXbMDoHDwVN2tF"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Gin") {
-    playlistUrl = "37i9dQZF1DWV7EzJMK2FUI";
+    randomUrl = [
+      "37i9dQZF1DWV7EzJMK2FUI",
+      "37i9dQZF1DXd9rSDyQguIk",
+      "37i9dQZF1DXdwTUxmGKrdN"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Tequila") {
-    playlistUrl = "37i9dQZF1DXa2PvUpywmrr";
+    randomUrl = [
+      "37i9dQZF1DXa2PvUpywmrr",
+      "37i9dQZEVXbLRQDuF5jeBp",
+      "37i9dQZF1DWUa8ZRTfalHk"
+    ]
+    playlistUrl = randomUrl[i];
   };
+  console.log(randomUrl[i]);
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
