@@ -77,11 +77,6 @@ function startTrivia() {
       triviaCategoryDropDown.id="14"
     });
 
-    $("#18").click(function(){
-      triviaCategoryDropDown.innerHTML="Science: Computers"
-      triviaCategoryDropDown.id="18"
-    });
-
     //create submit button
     var triviaVarSubmit = document.createElement("button");
     triviaVarSubmit.id="trivia-submit";
