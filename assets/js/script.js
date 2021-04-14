@@ -324,7 +324,22 @@ function generateCocktail(spirit){
         appendCocktail(drinkId, drinkName);
         console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
         // return;
-      });
+        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyB8O8a3o5JerC5p_6OJYCe0sML-YJC7Ur0&type=video&part=snippet&maxResults=1&q='+ drinkName)
+        
+      }).then(function(response){
+        response.json().then(function(data){
+            var youtubeSearch =data.items[0].id.videoId
+            console.log(youtubeSearch);
+            video = `
+
+            <iframe width="420" height="315" src="http://youtube.com/embed/${youtubeSearch}" frameborder="0" allowfullscreen></iframe>
+            
+            `
+            $("#videos").append(video)
+        })
+            
+        })
+      
     }
   )
   .catch(function(err) {
