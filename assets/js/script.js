@@ -319,7 +319,7 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
-        let cocktailName = drinkName + 'Cocktail'
+        let cocktailName = drinkName + 'Cocktail';
         // console.log("DRINK NAME: " + drinkName);
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
