@@ -10,7 +10,7 @@ let drinkId = "";
      if(!localStorage.getItem('Yes')){
       $(".modal").addClass("is-active")
      }
-  },1000);
+  },500);
   $("#yes").on("click",function(){
     
     localStorage.setItem('Yes',true);
