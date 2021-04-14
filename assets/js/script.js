@@ -347,31 +347,31 @@ function selectPlaylist(spirit) {
 
 
 //Youtube Api
-$(document).ready(function(){
-  const API_KEY = "AIzaSyAmFaBVys1owWwDZNgf7Da-mC_79ESpc0w"
+//  $(document).ready(function(){
+  //const API_KEY = "AIzaSyAmFaBVys1owWwDZNgf7Da-mC_79ESpc0w"
 
-  var video = ''
+  //var video = ''
   
   
-  $("form").submit(function(event){
-    event.preventDefault()
-    var search = $("#search").val()
-    videoSearch(API_KEY,search);
-  })
-    function videoSearch(key,search,maxResults){
-      var maxResults = 1;
-    $.get("https://www.googleapis.com/youtube/v3/search?key="+ key + "&type=video&part=snippet&rmaxResults"+ maxResults +"&q=" + search,function(data){
+  //$("form").submit(function(event){
+    //event.preventDefault()
+    //var search = $("#search").val()
+    //videoSearch(API_KEY,search);
+  //})
+    //function videoSearch(key,search,maxResults){
+      //var maxResults = 1;
+    //$.get("https://www.googleapis.com/youtube/v3/search?key="+ key + "&type=video&part=snippet&rmaxResults"+ maxResults +"&q=" + search,function(data){
       
-      console.log(data.pageInfo.resultsPerPage)
-      data.items.forEach(item => {
-        video = ` 
-        <iframe width="300" height="380" src="http://youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
-        ` 
-        $("#videos").append(video)
-      })
-    })
-  }
-})
+      //console.log(data.pageInfo.resultsPerPage)
+      //data.items.forEach(item => {
+        //video = ` 
+        //<iframe width="300" height="380" src="http://youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
+        //` 
+        //$("#videos").append(video)
+      //})
+    //})
+  //}
+//})
 
 
 
