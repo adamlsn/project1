@@ -6,19 +6,122 @@
 
 /* COLORS */
 :root {
-    --pirmary: #FF5349;
-    --secondary: #C71585;
+    --pirmary: #606060ff;
+    --secondary: #D6ED17FF;
+}
+
+body, html{
+  background: #B3B492
 }
 
 /* HEADER STYLING */
 header div {
-    background: var(--secondary);
+    background: var(--pirmary);
     width: 100%;
 }
 
+header div h1 {
+    color: var(--secondary);
+}
+
+header div h1 span {
+    color: var(--secondary);
+}
+
+/*BODY TEXT STYLING */
+
+
+
+/* DROPDOWN STYLING  */
+.dropbtn {
+    background-color: var(--pirmary);
+    color: var(--secondary);
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: var(--secondary)}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: var(--secondary);
+  }
+
+/* COCKTAIL DISPLAY STYLING */
+
+#drink-section img{
+  width: 25%;
+  height: auto;
+}
+
+
+#drink-section h4 {
+  text-align: auto;
+  font-weight: 100;
+}
+
+li {
+  list-style-type: none;
+}
+
+
+
 /* FOOTER STYLING */
 footer {
-    background: var(--secondary);
+    background: var(--pirmary);
+    bottom: 0;
+    width: 100%;
+    position:static;
     text-decoration: none;
     
+}
+footer a {
+  color: var(--secondary);
+}
+
+/* START OF TRIVIA STYLING */
+.trivia-container{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#trueBtn{
+    margin: 10px;
+    width: 50px;
+    background-color: var(--pirmary);
+    color: var(--secondary);
+}
+
+#falseBtn{
+    margin: 10px;
+    width: 50px;
+    background-color: var(--pirmary);
+    color: var(--secondary);
 }

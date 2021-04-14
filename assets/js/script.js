@@ -1,4 +1,3 @@
-// JAVASCRIPT FUNCTIONALITY OF DROPDOWN
 //***************************
 //GLOBAL VARIABLES
 //***************************
@@ -7,7 +6,7 @@ let spirit = "";
 let drinkName= "";
 let drinkId = "";
 
- //Getting age of the user and setting the answer
+ //Getting age of the user and setting the user selections
     setTimeout(function(){
      if(!localStorage.getItem('Yes')){
       $(".modal").addClass("is-active")
@@ -313,6 +312,7 @@ function appendCocktail(drinkId){
           }
         }
       });
+      
     }
   )
   .catch(function(err) {
@@ -370,15 +370,6 @@ function selectPlaylist(spirit) {
   //}
 //})
 
-fetch('https://www.googleapis.com/youtube/v3/search?key=AIzaSyAmFaBVys1owWwDZNgf7Da-mC_79ESpc0w')
- .then(function(response){
-   return response.json();
- })
 
 
 
-let dropdown = document.querySelector('.dropdown');
-            dropdown.addEventListener('click', function(event) {
-                event.stopPropagation();
-                dropdown.classList.toggle('is-active');
-            });
