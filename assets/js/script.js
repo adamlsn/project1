@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
 // JAVASCRIPT FUNCTIONALITY OF DROPDOWN
-=======
 //***************************
 //GLOBAL VARIABLES
 //***************************
@@ -378,7 +376,6 @@ fetch('https://www.googleapis.com/youtube/v3/search?key=AIzaSyAmFaBVys1owWwDZNgf
  })
 
 
->>>>>>> Stashed changes
 
 let dropdown = document.querySelector('.dropdown');
             dropdown.addEventListener('click', function(event) {
