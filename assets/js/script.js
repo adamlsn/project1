@@ -5,7 +5,6 @@
 let spirit = "";
 let drinkName= "";
 let drinkId = "";
-
  //Getting age of the user and setting the user selections
     setTimeout(function(){
      if(!localStorage.getItem('Yes')){
@@ -22,7 +21,8 @@ let drinkId = "";
       $(".text").html("Sorry you should be 21 to enter this page.");
 
   })
-//trivia
+
+//trivia global variables
 var startTriviaBtn = document.getElementById("start") //initial screen start trivia game button
 var triviaEl = document.getElementById("trivia"); //set var to trivia container
 var introEl = document.getElementById("intro"); //set var to text field for displaying intro question
@@ -36,50 +36,115 @@ var triviaIndex = 0; //for the position in array
 var answerFeedback = document.getElementById("answerFeedback"); //for setting the answerFeedback field as var to display feedback on users answer to question
 var currentScore = document.getElementById("currentScore"); //for setting the text on the page for the current score
 var apiResults; 
-var score =0;
-var questionArrayLength = 10; //var to pass through url on count of trivia questions
-var timer =2;//timer for allowing feedback to be displayed for user to see correct vs incorrect response
+var score =0 ;
+function reset(){
+    score=0;
+    triviaIndex=0;
+}
+//var questionArrayLength = document.getElementById("triviaLength"); //var to pass through url on count of trivia questions
+var questionArrayLength = 10; //default question trivia length
+var timer =1;//timer for allowing feedback to be displayed for user to see correct vs incorrect response
+//var triviaDifficultyEl = document.getElementById("triviaDifficulty");
+var triviaCategoryEl = document.getElementById("triviaCategory");
+var triviaStartQuestionsEL = document.getElementById("trivia-start-questions");
+var triviaDifficultyDropDown; 
+var triviaCategoryDropDown;
 
-console.log(triviaIndex)
 
 //***************************
 //START OF TRIVIA
 //***************************
 function startTrivia() {
-    //remove start trivia button
-    startTriviaBtn.parentNode.removeChild(startTriviaBtn);
-    introEl.innerHTML='';
+    //reset index start and score to 0
+    reset();
 
-    //add question   
-    triviaAPI();
+    //clear text fields for replay
+    startTriviaBtn.style.display="none";
+    questionsEl.innerHTML="";
+    answerFeedback.innerHTML="";
+    introEl.innerHTML="";
+    currentScore.innerHTML="";
+
+    //create category button
+    var triviaCategoryDropDown=document.createElement("button");
+    triviaCategoryDropDown.id="dropbtn";
+    triviaCategoryDropDown.textContent="Category";
+    triviaCategoryDropDown.className="dropbtn";
+    triviaCategoryEl.appendChild(triviaCategoryDropDown);
+
+    //check dropdown selected from category button
+    $("#9").click(function(){
+      triviaCategoryDropDown.innerHTML="General Knowledge"
+      triviaCategoryDropDown.id="9"
+    });
+
+    $("#21").click(function(){
+      triviaCategoryDropDown.innerHTML="Sports"
+      triviaCategoryDropDown.id="21"
+    });
+
+    $("#23").click(function(){
+      triviaCategoryDropDown.innerHTML="History"
+      triviaCategoryDropDown.id="23"
+    });
+
+    $("#14").click(function(){
+      triviaCategoryDropDown.innerHTML="Entertainment: Television"
+      triviaCategoryDropDown.id="14"
+    });
+
+    //create submit button
+    var triviaVarSubmit = document.createElement("button");
+    triviaVarSubmit.id="trivia-submit";
+    triviaVarSubmit.textContent="submit";
+    triviaVarSubmit.className="dropbtn"
+    triviaStartQuestionsEL.appendChild(triviaVarSubmit);
+
+    //check that user picked a category and difficulty
+    triviaVarSubmit.addEventListener("click", function () {
+
+
+      if (triviaCategoryDropDown.innerHTML==="Category" ){
+        //nothing happens if both buttons aren't modified
+      }
+      else {
         
-    //add true button    
-    var answerTrue = document.createElement('button');
-    answerTrue.id = 'trueBtn';
-    answerTrue.textContent = "True";
-    triviaEl.appendChild(answerTrue);
-    //add false button
-    var answerFalse = document.createElement('button');
-    answerFalse.id = 'falseBtn';
-    answerFalse.textContent = "False";
-    triviaEl.appendChild(answerFalse);
+        fetch(`https://opentdb.com/api.php?amount=10&category=${triviaCategoryDropDown.id}&type=boolean`).then(function (response) {
+          console.log(response);
+          return response.json();
+          })
+          .then(function(response){
+              console.log(response.results[triviaIndex])
+              console.log(response.results);
+              apiResults=response.results;
+              console.log(triviaAnswer)
+              resultLoop();
+          });
+        triviaVarSubmit.parentElement.removeChild(triviaVarSubmit)
+        triviaCategoryDropDown.parentElement.removeChild(triviaCategoryDropDown)
+        //triviaDifficultyDropDown.parentElement.removeChild(triviaDifficultyDropDown)
+          gameBegin();
+        
+      }
+    })
 
-    checkAnswer();
 };
 
-//trivia API fetch and store 
-function triviaAPI(){
-    fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean").then(function (response) {
-    console.log(response);
-    return response.json();
-    })
-    .then(function(response){
-        console.log(response.results[triviaIndex])
-        console.log(response.results);
-        apiResults=response.results;
-        console.log(triviaAnswer)
-        resultLoop();
-    });
+function gameBegin(){
+        //add question   
+                
+        //add true button    
+        var answerTrue = document.createElement("button");
+        answerTrue.id = "trueBtn";
+        answerTrue.textContent = "True";
+        triviaEl.appendChild(answerTrue);
+        //add false button
+        var answerFalse = document.createElement("button");
+        answerFalse.id = "falseBtn";
+        answerFalse.textContent = "False";
+        triviaEl.appendChild(answerFalse);
+    
+        checkAnswer();
 }
 
 function countDown(){
@@ -92,7 +157,7 @@ function countDown(){
             answerFeedback.innerHTML=''
             resultLoop();
         }
-    },1000);            
+    },600);            
 }
 
 function resultLoop(){
@@ -147,6 +212,13 @@ function checkAnswer(){
         }
     }
 
+    
+    
+    $("#trueBtn").click(function() {
+        var that = this;
+        $(this).attr("disabled", true);
+        setTimeout(function() { enableSubmit(that) }, 1000);
+    });
    
    function gameResults(){
     falseBtn.innerHTML="I'm Done";
@@ -167,7 +239,9 @@ function checkAnswer(){
     }
     //function for user playing another round
     document.getElementById("trueBtn").onclick = function(){
-
+        trueBtn.parentNode.removeChild(trueBtn);
+        falseBtn.parentNode.removeChild(falseBtn);
+        startTrivia();
     }
     //function for user being done playing game
     document.getElementById("falseBtn").onclick = function(){
@@ -177,11 +251,7 @@ function checkAnswer(){
         currentScore.innerHTML=''
         trueBtn.parentNode.removeChild(trueBtn);
         falseBtn.parentNode.removeChild(falseBtn);
-        var startTriviaBtn = document.createElement('button');
-        startTriviaBtn.id = 'start';
-        startTriviaBtn.textContent = "Start trivia";
-        triviaEl.appendChild(startTriviaBtn);
-
+        document.getElementById("start").style.display="block";
     }
    }
 
@@ -249,10 +319,6 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
-        const drinkSearch= $("input").html(drinkName);
-        
-        
-
         // console.log("DRINK NAME: " + drinkName);
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
@@ -290,29 +356,39 @@ function appendCocktail(drinkId){
         document.getElementById('drink-section').innerHTML = "";
 
         let drinkInfo = document.createElement('h4');
+        drinkInfo.classList.add("py-1");
+        drinkInfo.classList.add("is-size-4");
         drinkInfo.innerHTML = data.drinks[0].strDrink;
 
         drinkSection.appendChild(drinkInfo);
 
         let img = document.createElement('img');
         img.src = data.drinks[0].strDrinkThumb;
+        img.classList.add("py-2")
 
         drinkSection.appendChild(img);
 
         for(let i=1; i<16; i++){
-          console.log(i);
-          
-          // let quantity = "";
           let ingredient = document.createElement('li');
           ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
           if(data.drinks[0][`strMeasure${i + 1}` ] === null) {
+            let description = document.createElement("p");
+            description.innerHTML = data.drinks[0].strInstructions;
+            description.classList.add("pt-3");
+            drinkSection.appendChild(description);
             return;
           }
         }
+        let instruction = document.createElement('li');
+        instruction.innerHTML = data.drinks[0].strInstructions;
+
+        console.log(instruction);
+
+        drinkSection.appendChild(instruction);
+
       });
-      
     }
   )
   .catch(function(err) {
@@ -326,50 +402,81 @@ function appendCocktail(drinkId){
 
 function selectPlaylist(spirit) {
   let openingUrl = "https://open.spotify.com/embed/playlist/";
+  let i = Math.floor(Math.random() * 3);
+  console.log(i);
+  let randomUrl = [];
   let playlistUrl = ""
   if (spirit === "Bourbon") {
-    playlistUrl = "37i9dQZF1DX3Fzl4v4w9Zp";
+    randomUrl = [
+      "37i9dQZF1DX3Fzl4v4w9Zp",
+      "37i9dQZF1DX2taNm7KfjOX",
+      "37i9dQZF1DXat5j4Lk8UEj"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Rum") {
-    playlistUrl = "37i9dQZF1DX83I5je4W4rP";
+    randomUrl = [
+      "37i9dQZF1DX83I5je4W4rP",
+      "37i9dQZF1DX4Y4RhrZqHhr",
+      "37i9dQZF1DX6RA5ZrA5a23"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Vodka") {
-    playlistUrl = "37i9dQZF1DWXRqgorJj26U";
+    randomUrl = [
+      "37i9dQZF1DWXRqgorJj26U",
+      "37i9dQZF1DXdmXczhgY3oW",
+      "37i9dQZEVXbMDoHDwVN2tF"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Gin") {
-    playlistUrl = "37i9dQZF1DWV7EzJMK2FUI";
+    randomUrl = [
+      "37i9dQZF1DWV7EzJMK2FUI",
+      "37i9dQZF1DXd9rSDyQguIk",
+      "37i9dQZF1DXdwTUxmGKrdN"
+    ]
+    playlistUrl = randomUrl[i];
   };
   if (spirit === "Tequila") {
-    playlistUrl = "37i9dQZF1DXa2PvUpywmrr";
+    randomUrl = [
+      "37i9dQZF1DXa2PvUpywmrr",
+      "37i9dQZEVXbLRQDuF5jeBp",
+      "37i9dQZF1DWUa8ZRTfalHk"
+    ]
+    playlistUrl = randomUrl[i];
   };
+  console.log(randomUrl[i]);
   document.getElementById("spotify-frame").src = openingUrl + playlistUrl;
 }
 
+// MODAL SCRIPT
+// DOM ELEMENTS
 
-//Youtube Api
-//$(document).ready(function(){
-  //const API_KEY = "AIzaSyAmFaBVys1owWwDZNgf7Da-mC_79ESpc0w"
-
-  //var video = ''
-  
-  //$("form").submit(function(event){
-    //event.preventDefault()
-    //var search = $("#search").val()
-    //videoSearch(API_KEY,search,1);
-  //})
-    //function videoSearch(key,search,maxResults){
-    //$.get("https://www.googleapis.com/youtube/v3/search?key="+ key + "&type=video&part=snippet&rmaxResults"+ maxResults +"&q=" + search,function(data){
-      //console.log(data)
-      //data.items.forEach(item => {
-        //video = ` 
-        //<iframe width="300" height="380" src="http://youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
-        //` 
-        //$("#videos").append(video)
-      //})
-    //})
-  //}
-//})
-
-
-
-
+const modal = document.querySelector('#site-modal');
+const closeBtn = document.querySelector('.close');
+// EVENTS
+window.addEventListener('load', openModal);
+closeBtn.addEventListener('click', closeModal);
+window.addEventListener('click', outsideClick);
+// OPEN LOAD MODAL
+function openModal() {
+  modal.style.display = 'block';
+  if(localStorage.getItem("newUser")==='null'){
+    modal.style.display = 'block';
+    localStorage.setItem("newUser", 'no')
+  }
+}
+  if(localStorage.getItem("newUser")==='no'){
+    modal.style.display = 'none';
+}
+// CLOSE MODAL
+function closeModal() {
+  modal.style.display = 'none';
+}
+// CLOSE MODAL IF OUTSIDE CLICK
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+}
