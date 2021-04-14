@@ -6,13 +6,16 @@
 
 /* COLORS */
 :root {
-    --pirmary: #606060ff;
-    --secondary: #D6ED17FF;
+    --pirmary: #191414;
+    --secondary: #1ed760;
+    --third: #1db954;
+    --fourth: #ffffff;
 }
 
 body, html{
-  background: #B3B492
+  background: #b3b3b3;
 }
+
 
 /* HEADER STYLING */
 header div {
@@ -27,10 +30,7 @@ header div h1 {
 header div h1 span {
     color: var(--secondary);
 }
-
-/*BODY TEXT STYLING */
-
-
+/* END OF HEADER STYLING */
 
 /* DROPDOWN STYLING  */
 .dropbtn {
@@ -73,6 +73,8 @@ header div h1 span {
     background-color: var(--secondary);
   }
 
+/* END OF DROPDOWN STYLING */
+
 /* COCKTAIL DISPLAY STYLING */
 
 #drink-section img{
@@ -83,13 +85,15 @@ header div h1 span {
 
 #drink-section h4 {
   text-align: auto;
-  font-weight: 100;
+  font-weight: bold;
+  color: var(--pirmary);
 }
 
 li {
   list-style-type: none;
 }
 
+/* END OF COCKTAIL DISPLAY SETTING */
 
 
 /* FOOTER STYLING */
@@ -105,11 +109,38 @@ footer a {
   color: var(--secondary);
 }
 
+footer p {
+  color: var(--secondary);
+}
+/* END OF FOOTER STYLING */
+
 /* START OF TRIVIA STYLING */
 .trivia-container{
     margin: 20px;
     display: flex;
     justify-content: center;
+    border-width: 50%;
+    border-color: var(--pirmary);
+    border-style: solid;
+    background-color: var(--third);
+}
+
+.intro{
+  font-weight: bold;
+  color: var(--pirmary)
+}
+
+.answerFeedback {
+  font-weight: bold;
+}
+
+.currentScore {
+  font-weight: bold;
+}
+
+.trivia-start {
+  background-color: var(--pirmary);
+  color: var(--secondary);
 }
 
 #trueBtn{
@@ -124,4 +155,77 @@ footer a {
     width: 50px;
     background-color: var(--pirmary);
     color: var(--secondary);
+}
+/* END OF TRIVIA STYLING */
+
+/* START OF MODAL STYLING */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+  margin: 10% auto;
+  width: 60%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-header h2,
+.modal-footer h3 {
+  margin: 0;
+}
+
+.modal-header {
+  background: var(--pirmary);
+  padding: 15px;
+  color: var(--secondary);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-body {
+  padding: 10px 20px;
+  background: #fff;
+}
+
+.modal-footer {
+  background: var(--pirmary);
+  padding: 10px;
+  color: var(--secondary);
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.close {
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+  color: #fff;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
