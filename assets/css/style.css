@@ -199,9 +199,9 @@ footer p {
 }
 
 .modal-footer {
-  background: var(--secondary);
+  background: var(--pirmary);
   padding: 10px;
-  color: var(--pirmary);
+  color: var(--secondary);
   text-align: center;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
