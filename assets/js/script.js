@@ -267,7 +267,7 @@ function generateCocktail(spirit){
 }
 
 //PULL APPROPRIATE COCKTAIL PAGE AND APPEND TO BODY
-function appendCocktail(drinkId){
+function appendCocktail(drinkId, drinkName){
 	fetch("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkId)
   .then(
     //NONRESPONSE CONSOLE WARNING
@@ -312,6 +312,7 @@ function appendCocktail(drinkId){
           }
         }
       });
+      
     }
   )
   .catch(function(err) {
@@ -351,14 +352,17 @@ $(document).ready(function(){
 
   var video = ''
   
+  
   $("form").submit(function(event){
     event.preventDefault()
     var search = $("#search").val()
-    videoSearch(API_KEY,search,1);
+    videoSearch(API_KEY,search);
   })
     function videoSearch(key,search,maxResults){
+      var maxResults = 1;
     $.get("https://www.googleapis.com/youtube/v3/search?key="+ key + "&type=video&part=snippet&rmaxResults"+ maxResults +"&q=" + search,function(data){
-      console.log(data)
+      
+      console.log(data.pageInfo.resultsPerPage)
       data.items.forEach(item => {
         video = ` 
         <iframe width="300" height="380" src="http://youtube.com/embed/${item.id.videoId}" frameborder="0" allowfullscreen></iframe>
