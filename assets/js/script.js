@@ -319,12 +319,13 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
+        let cocktailName = drinkName + 'Cocktail'
         // console.log("DRINK NAME: " + drinkName);
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
         console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
         // return;
-        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyB8O8a3o5JerC5p_6OJYCe0sML-YJC7Ur0&type=video&part=snippet&maxResults=1&q='+ drinkName)
+        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyB8O8a3o5JerC5p_6OJYCe0sML-YJC7Ur0&type=video&part=snippet&maxResults=1&q='+ cocktailName)
         
       }).then(function(response){
         response.json().then(function(data){
