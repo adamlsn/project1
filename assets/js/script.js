@@ -334,12 +334,6 @@ function generateCocktail(spirit){
             console.log(youtubeSearch);
 
             document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
-            // video = `
-
-            // <iframe width="420" height="315" src="http://youtube.com/embed/${youtubeSearch}" frameborder="0" allowfullscreen></iframe>
-            
-            // `
-            // $("#videos").append(video)
         })
             
         })
