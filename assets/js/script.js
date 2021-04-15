@@ -330,7 +330,7 @@ function generateCocktail(spirit){
       }).then(function(response){
         response.json().then(function(data){
           // assignin videoId and embed it to html
-            var youtubeSearch =data.items[0].id.videoId
+            var youtubeSearch =data.items[0].id.videoId;
             console.log(youtubeSearch);
 
             document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
