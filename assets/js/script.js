@@ -6,21 +6,21 @@ let spirit = "";
 let drinkName= "";
 let drinkId = "";
  //Getting age of the user and setting the user selections
-    setTimeout(function(){
-     if(!localStorage.getItem('Yes')){
-      $(".modal").addClass("is-active")
-     }
-  },1000);
-  $("#yes").on("click",function(){
-    
-    localStorage.setItem('Yes',true);
-    
-   $(".modal").removeClass("is-active")   
-  })
-  $("#no").on("click",function(){
-      $(".text").html("Sorry you should be 21 to enter this page.");
+ setTimeout(function(){
+  if(!localStorage.getItem('Yes')){
+   $(".modal").addClass("is-active")
+  }
+},1000);
+$("#yes").on("click",function(){
+ 
+ localStorage.setItem('Yes',true);
+ 
+$(".modal").removeClass("is-active")   
+})
+$("#no").on("click",function(){
+   $(".text").html("Sorry you should be 21 to enter this page.");
 
-  })
+})
 
 //trivia global variables
 var startTriviaBtn = document.getElementById("start") //initial screen start trivia game button
@@ -319,12 +319,25 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
+        let cocktailName = drinkName + 'Cocktail';
         // console.log("DRINK NAME: " + drinkName);
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
         console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
-        // return;
-      });
+        // Getting youtube video with cocktail name and finding the videoId;
+        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyB8O8a3o5JerC5p_6OJYCe0sML-YJC7Ur0&type=video&part=snippet&maxResults=1&q='+ cocktailName)
+        
+      }).then(function(response){
+        response.json().then(function(data){
+          // assignin videoId and embed it to html
+            var youtubeSearch =data.items[0].id.videoId
+            console.log(youtubeSearch);
+
+            document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
+        })
+            
+        })
+      
     }
   )
   .catch(function(err) {
@@ -377,6 +390,7 @@ function appendCocktail(drinkId){
             let description = document.createElement("p");
             description.innerHTML = data.drinks[0].strInstructions;
             description.classList.add("pt-3");
+            description.classList.add("mx-3");
             drinkSection.appendChild(description);
             return;
           }
