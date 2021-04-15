@@ -22,4 +22,7 @@ Website
 
 
 Git Repo Link
-https://github.com/adamlsn/project1
+https://github.com/adamlsn/songsAndSpirits
+
+Live Application Link
+https://adamlsn.github.io/songsAndSpirits/
