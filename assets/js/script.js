@@ -325,15 +325,14 @@ function generateCocktail(spirit){
         appendCocktail(drinkId, drinkName);
         console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
         // Getting youtube video with cocktail name and finding the videoId;
-        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyB8O8a3o5JerC5p_6OJYCe0sML-YJC7Ur0&type=video&part=snippet&maxResults=1&q='+ cocktailName)
+        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyDODhnbSK7cWXu8d5iAbpRpsdHRFLfFfJM&type=video&part=snippet&maxResults=1&q='+ cocktailName)
         
       }).then(function(response){
         response.json().then(function(data){
           // assignin videoId and embed it to html
             var youtubeSearch =data.items[0].id.videoId;
             console.log(youtubeSearch);
-
-            document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
+            document.getElementById("video").src = `https://youtube.com/embed/${youtubeSearch}`
         })
             
         })
