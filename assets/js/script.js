@@ -332,7 +332,7 @@ function generateCocktail(spirit){
           // assignin videoId and embed it to html
             var youtubeSearch =data.items[0].id.videoId
             console.log(youtubeSearch);
-            document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
+            document.getElementById("video").src = `https://youtube.com/embed/${youtubeSearch}`
         })
             
         })
