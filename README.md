@@ -8,7 +8,7 @@ Description:
 
 Screenshot of completed website
 
-<img src="https://github.com/adamlsn/project1/blob/develop/images/Group-project.png" width="300">
+![screenshot](./assets/images/screenshot.png)
 
 Built With:
 HTML
