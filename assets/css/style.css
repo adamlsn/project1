@@ -138,6 +138,10 @@ footer p {
   font-weight: bold;
 }
 
+.questions {
+  font-weight: bold;
+}
+
 .trivia-start {
   background-color: var(--pirmary);
   color: var(--secondary);

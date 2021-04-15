@@ -319,7 +319,7 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
-        let cocktailName = drinkName + 'Cocktail'
+        let cocktailName = drinkName + 'Cocktail';
         // console.log("DRINK NAME: " + drinkName);
         // console.log("DRINK ID: " + drinkId);
         appendCocktail(drinkId, drinkName);
@@ -332,8 +332,7 @@ function generateCocktail(spirit){
           // assignin videoId and embed it to html
             var youtubeSearch =data.items[0].id.videoId
             console.log(youtubeSearch);
-            
-            document.getElementById("video").src = `https://youtube.com/embed/${youtubeSearch}`
+            document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
         })
             
         })
@@ -390,6 +389,7 @@ function appendCocktail(drinkId){
             let description = document.createElement("p");
             description.innerHTML = data.drinks[0].strInstructions;
             description.classList.add("pt-3");
+            description.classList.add("mx-3");
             drinkSection.appendChild(description);
             return;
           }
