@@ -332,12 +332,14 @@ function generateCocktail(spirit){
           // assignin videoId and embed it to html
             var youtubeSearch =data.items[0].id.videoId
             console.log(youtubeSearch);
-            video = `
 
-            <iframe width="420" height="315" src="http://youtube.com/embed/${youtubeSearch}" frameborder="0" allowfullscreen></iframe>
+            document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
+            // video = `
+
+            // <iframe width="420" height="315" src="http://youtube.com/embed/${youtubeSearch}" frameborder="0" allowfullscreen></iframe>
             
-            `
-            $("#videos").append(video)
+            // `
+            // $("#videos").append(video)
         })
             
         })
@@ -394,6 +396,7 @@ function appendCocktail(drinkId){
             let description = document.createElement("p");
             description.innerHTML = data.drinks[0].strInstructions;
             description.classList.add("pt-3");
+            description.classList.add("mx-3");
             drinkSection.appendChild(description);
             return;
           }
