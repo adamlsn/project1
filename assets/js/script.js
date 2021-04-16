@@ -110,14 +110,10 @@ function startTrivia() {
       else {
         
         fetch(`https://opentdb.com/api.php?amount=10&category=${triviaCategoryDropDown.id}&type=boolean`).then(function (response) {
-          console.log(response);
           return response.json();
           })
           .then(function(response){
-              console.log(response.results[triviaIndex])
-              console.log(response.results);
               apiResults=response.results;
-              console.log(triviaAnswer)
               resultLoop();
           });
         triviaVarSubmit.parentElement.removeChild(triviaVarSubmit)
@@ -127,7 +123,6 @@ function startTrivia() {
         
       }
     })
-
 };
 
 function gameBegin(){
@@ -154,15 +149,13 @@ function countDown(){
         }
         else if(timer===0){
             clearInterval(timeInterval);
-            answerFeedback.innerHTML=''
+            answerFeedback.innerHTML=""
             resultLoop();
         }
     },600);            
 }
 
 function resultLoop(){
-    console.log("trivia index: "+triviaIndex);
-        console.log("question length: " +questionArrayLength);
     if(triviaIndex===questionArrayLength){
         gameResults();
     }else{
@@ -174,38 +167,32 @@ function resultLoop(){
 
 function checkAnswer(){
     document.getElementById("trueBtn").onclick = function() {
-        console.log("True button clicked");
         if(triviaAnswer==="True"){
             score += 10;
             currentScore.innerHTML="Current Score: " + score;
             answerFeedback.innerHTML="That's Correct!"
             triviaIndex++;
-            console.log(score);
-            //add 2 seconds delay for reading response then clear text and go to next question
+            //add .5 second delay for reading response then clear text and go to next question
             countDown();
             }
             else{
                 answerFeedback.innerHTML="Incorrect";
                 triviaIndex++;
-                console.log(score);
                 countDown();
             }
         }
     document.getElementById("falseBtn").onclick = function() {
-        console.log("False button clicked");
         if(triviaAnswer==="False"){
             score += 10;
             currentScore.innerHTML="Current Score: " + score;
             answerFeedback.innerHTML="That's Correct!"
             triviaIndex++;
-            console.log(score);
             //add 2 seconds delay for reading response then clear text and go to next question
             countDown();
             }   
             else {
             answerFeedback.innerHTML="Incorrect";
             triviaIndex++;
-            console.log(score);
             //add 2 seconds delay for reading response then clear text and go to next question
             countDown();
             }
@@ -223,11 +210,11 @@ function checkAnswer(){
    function gameResults(){
     falseBtn.innerHTML="I'm Done";
     trueBtn.innerHTML="Play Again"
-    answerFeedback.innerHTML='';
+    answerFeedback.innerHTML="";
     questionsEl.innerHTML = "Good effort! You answered all of the questions";
     //check local storage for a new high score
     if(localStorage.getItem("highScore")===null){
-        localStorage.setItem("highScore", score)
+        localStorage.setItem("highScore", score);
         answerFeedback.innerHTML="Congratulations! You have set a new high score!"
     }
     else if(score>localStorage.getItem("highScore")){
@@ -373,7 +360,8 @@ function appendCocktail(drinkId){
           ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
-          if(data.drinks[0][`strMeasure${i + 1}` ] === null) {
+          
+          if(data.drinks[0]["strMeasure${i + 1}"] === null) {
             let description = document.createElement("p");
             description.innerHTML = data.drinks[0].strInstructions;
             description.classList.add("pt-3");
@@ -450,30 +438,30 @@ function selectPlaylist(spirit) {
 // MODAL SCRIPT
 // DOM ELEMENTS
 
-const modal = document.querySelector('#site-modal');
-const closeBtn = document.querySelector('.close');
+const modal = document.querySelector("#site-modal");
+const closeBtn = document.querySelector(".close");
 // EVENTS
-window.addEventListener('load', openModal);
-closeBtn.addEventListener('click', closeModal);
-window.addEventListener('click', outsideClick);
+window.addEventListener("load", openModal);
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", outsideClick);
 // OPEN LOAD MODAL
 function openModal() {
-  modal.style.display = 'block';
-  if(localStorage.getItem("newUser")==='null'){
-    modal.style.display = 'block';
-    localStorage.setItem("newUser", 'no')
+  modal.style.display = "block";
+  if(localStorage.getItem("newUser")==="null"){
+    modal.style.display = "block";
+    localStorage.setItem("newUser", "no")
   }
 }
-  if(localStorage.getItem("newUser")==='no'){
-    modal.style.display = 'none';
+  if(localStorage.getItem("newUser")==="no"){
+    modal.style.display = "none";
 }
 // CLOSE MODAL
 function closeModal() {
-  modal.style.display = 'none';
+  modal.style.display = "none";
 }
 // CLOSE MODAL IF OUTSIDE CLICK
 function outsideClick(e) {
   if (e.target == modal) {
-    modal.style.display = 'none';
+    modal.style.display = "none";
   }
 }
