@@ -172,7 +172,7 @@ function checkAnswer(){
             currentScore.innerHTML="Current Score: " + score;
             answerFeedback.innerHTML="That's Correct!"
             triviaIndex++;
-            //add 2 seconds delay for reading response then clear text and go to next question
+            //add .5 second delay for reading response then clear text and go to next question
             countDown();
             }
             else{
