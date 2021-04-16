@@ -110,14 +110,10 @@ function startTrivia() {
       else {
         
         fetch(`https://opentdb.com/api.php?amount=10&category=${triviaCategoryDropDown.id}&type=boolean`).then(function (response) {
-          console.log(response);
           return response.json();
           })
           .then(function(response){
-              console.log(response.results[triviaIndex])
-              console.log(response.results);
               apiResults=response.results;
-              console.log(triviaAnswer)
               resultLoop();
           });
         triviaVarSubmit.parentElement.removeChild(triviaVarSubmit)
@@ -154,15 +150,13 @@ function countDown(){
         }
         else if(timer===0){
             clearInterval(timeInterval);
-            answerFeedback.innerHTML=''
+            answerFeedback.innerHTML=""
             resultLoop();
         }
     },600);            
 }
 
 function resultLoop(){
-    console.log("trivia index: "+triviaIndex);
-        console.log("question length: " +questionArrayLength);
     if(triviaIndex===questionArrayLength){
         gameResults();
     }else{
@@ -174,38 +168,32 @@ function resultLoop(){
 
 function checkAnswer(){
     document.getElementById("trueBtn").onclick = function() {
-        console.log("True button clicked");
         if(triviaAnswer==="True"){
             score += 10;
             currentScore.innerHTML="Current Score: " + score;
             answerFeedback.innerHTML="That's Correct!"
             triviaIndex++;
-            console.log(score);
             //add 2 seconds delay for reading response then clear text and go to next question
             countDown();
             }
             else{
                 answerFeedback.innerHTML="Incorrect";
                 triviaIndex++;
-                console.log(score);
                 countDown();
             }
         }
     document.getElementById("falseBtn").onclick = function() {
-        console.log("False button clicked");
         if(triviaAnswer==="False"){
             score += 10;
             currentScore.innerHTML="Current Score: " + score;
             answerFeedback.innerHTML="That's Correct!"
             triviaIndex++;
-            console.log(score);
             //add 2 seconds delay for reading response then clear text and go to next question
             countDown();
             }   
             else {
             answerFeedback.innerHTML="Incorrect";
             triviaIndex++;
-            console.log(score);
             //add 2 seconds delay for reading response then clear text and go to next question
             countDown();
             }
@@ -223,11 +211,11 @@ function checkAnswer(){
    function gameResults(){
     falseBtn.innerHTML="I'm Done";
     trueBtn.innerHTML="Play Again"
-    answerFeedback.innerHTML='';
+    answerFeedback.innerHTML="";
     questionsEl.innerHTML = "Good effort! You answered all of the questions";
     //check local storage for a new high score
     if(localStorage.getItem("highScore")===null){
-        localStorage.setItem("highScore", score)
+        localStorage.setItem("highScore", score);
         answerFeedback.innerHTML="Congratulations! You have set a new high score!"
     }
     else if(score>localStorage.getItem("highScore")){
@@ -246,9 +234,9 @@ function checkAnswer(){
     //function for user being done playing game
     document.getElementById("falseBtn").onclick = function(){
         introEl.innerHTML='Are you ready for a challenge?'
-        questionsEl.innerHTML='';
-        answerFeedback.innerHTML=''
-        currentScore.innerHTML=''
+        questionsEl.innerHTML="";
+        answerFeedback.innerHTML="";
+        currentScore.innerHTML="";
         trueBtn.parentNode.removeChild(trueBtn);
         falseBtn.parentNode.removeChild(falseBtn);
         document.getElementById("start").style.display="block";
