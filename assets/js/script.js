@@ -245,9 +245,9 @@ function checkAnswer(){
     //function for user being done playing game
     document.getElementById("falseBtn").onclick = function(){
         introEl.innerHTML='Are you ready for a challenge?'
-        questionsEl.innerHTML='';
-        answerFeedback.innerHTML=''
-        currentScore.innerHTML=''
+        questionsEl.innerHTML="";
+        answerFeedback.innerHTML="";
+        currentScore.innerHTML="";
         trueBtn.parentNode.removeChild(trueBtn);
         falseBtn.parentNode.removeChild(falseBtn);
         document.getElementById("start").style.display="block";
@@ -264,35 +264,30 @@ startTriviaBtn.addEventListener("click", startTrivia);
 //BUTTON CLICK LISTENERS
 $("#bourbon").click(function(){
   spirit = "Bourbon";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#rum").click(function(){
   spirit = "Rum";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#vodka").click(function(){
   spirit = "Vodka";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#gin").click(function(){
   spirit = "Gin";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#tequila").click(function(){
   spirit = "Tequila";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
@@ -306,7 +301,7 @@ function generateCocktail(spirit){
     //NONRESPONSE CONSOLE WARNING
     function(response) {
       if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
+        console.log("Looks like there was a problem. Status Code: " +
           response.status);
         return;
       }
@@ -318,21 +313,18 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
-        let cocktailName = drinkName + 'Cocktail';
-        // console.log("DRINK NAME: " + drinkName);
-        // console.log("DRINK ID: " + drinkId);
+        let cocktailName = drinkName + "Cocktail";
+
         appendCocktail(drinkId, drinkName);
-        console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
+
         // Getting youtube video with cocktail name and finding the videoId;
-        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyB8O8a3o5JerC5p_6OJYCe0sML-YJC7Ur0&type=video&part=snippet&maxResults=1&q='+ cocktailName)
+        return fetch ("https://www.googleapis.com/youtube/v3/search?key=AIzaSyDODhnbSK7cWXu8d5iAbpRpsdHRFLfFfJM&type=video&part=snippet&maxResults=1&q="+ cocktailName)
         
       }).then(function(response){
         response.json().then(function(data){
           // assignin videoId and embed it to html
-            var youtubeSearch =data.items[0].id.videoId
-            console.log(youtubeSearch);
-
-            document.getElementById("video").src = `http://youtube.com/embed/${youtubeSearch}`
+            var youtubeSearch =data.items[0].id.videoId;
+            document.getElementById("video").src = `https://youtube.com/embed/${youtubeSearch}`
         })
             
         })
@@ -340,7 +332,7 @@ function generateCocktail(spirit){
     }
   )
   .catch(function(err) {
-    console.log('Fetch Error :-S', err);
+    console.log("Fetch Error :-S", err);
   });
 }
 
@@ -358,11 +350,6 @@ function appendCocktail(drinkId){
 
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
-        console.log("Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function")
-        
-        console.log(data);
-        console.log(data.drinks[0].strDrink);
-
         let drinkSection = document.querySelector("#drink-section");
         
         document.getElementById("drink-section").innerHTML = "";
@@ -382,7 +369,7 @@ function appendCocktail(drinkId){
 
         for(let i=1; i<16; i++){
           let ingredient = document.createElement("li");
-          ingredient.innerHTML = data.drinks[0]["strMeasure${i}"] + " " + data.drinks[0]["strIngredient${i}"];
+          ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
           
@@ -398,10 +385,7 @@ function appendCocktail(drinkId){
         let instruction = document.createElement("li");
         instruction.innerHTML = data.drinks[0].strInstructions;
 
-        console.log(instruction);
-
         drinkSection.appendChild(instruction);
-
       });
     }
   )
@@ -417,7 +401,6 @@ function appendCocktail(drinkId){
 function selectPlaylist(spirit) {
   let openingUrl = "https://open.spotify.com/embed/playlist/";
   let i = Math.floor(Math.random() * 3);
-  console.log(i);
   let randomUrl = [];
   let playlistUrl = ""
   if (spirit === "Bourbon") {
