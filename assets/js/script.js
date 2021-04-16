@@ -265,35 +265,30 @@ startTriviaBtn.addEventListener("click", startTrivia);
 //BUTTON CLICK LISTENERS
 $("#bourbon").click(function(){
   spirit = "Bourbon";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#rum").click(function(){
   spirit = "Rum";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#vodka").click(function(){
   spirit = "Vodka";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#gin").click(function(){
   spirit = "Gin";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
 
 $("#tequila").click(function(){
   spirit = "Tequila";
-  console.log("CHOSEN SPIRIT IS: " + spirit);
   generateCocktail(spirit);
   selectPlaylist(spirit);
 });
@@ -320,10 +315,9 @@ function generateCocktail(spirit){
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
         let cocktailName = drinkName + 'Cocktail';
-        // console.log("DRINK NAME: " + drinkName);
-        // console.log("DRINK ID: " + drinkId);
+
         appendCocktail(drinkId, drinkName);
-        console.log("Drink name is: " + drinkName + " with ID of: " + drinkId);
+
         // Getting youtube video with cocktail name and finding the videoId;
         return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyDODhnbSK7cWXu8d5iAbpRpsdHRFLfFfJM&type=video&part=snippet&maxResults=1&q='+ cocktailName)
         
@@ -331,7 +325,6 @@ function generateCocktail(spirit){
         response.json().then(function(data){
           // assignin videoId and embed it to html
             var youtubeSearch =data.items[0].id.videoId;
-            console.log(youtubeSearch);
             document.getElementById("video").src = `https://youtube.com/embed/${youtubeSearch}`
         })
             
@@ -358,11 +351,6 @@ function appendCocktail(drinkId){
 
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
-        console.log("Drink with ID of " + drinkId + " and name of " + drinkName + " were called by appendCocktail function")
-        
-        console.log(data);
-        console.log(data.drinks[0].strDrink);
-
         let drinkSection = document.querySelector('#drink-section');
         
         document.getElementById('drink-section').innerHTML = "";
@@ -397,10 +385,7 @@ function appendCocktail(drinkId){
         let instruction = document.createElement('li');
         instruction.innerHTML = data.drinks[0].strInstructions;
 
-        console.log(instruction);
-
         drinkSection.appendChild(instruction);
-
       });
     }
   )
@@ -416,7 +401,6 @@ function appendCocktail(drinkId){
 function selectPlaylist(spirit) {
   let openingUrl = "https://open.spotify.com/embed/playlist/";
   let i = Math.floor(Math.random() * 3);
-  console.log(i);
   let randomUrl = [];
   let playlistUrl = ""
   if (spirit === "Bourbon") {
