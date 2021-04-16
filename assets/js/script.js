@@ -246,9 +246,9 @@ function checkAnswer(){
     //function for user being done playing game
     document.getElementById("falseBtn").onclick = function(){
         introEl.innerHTML='Are you ready for a challenge?'
-        questionsEl.innerHTML='';
-        answerFeedback.innerHTML=''
-        currentScore.innerHTML=''
+        questionsEl.innerHTML="";
+        answerFeedback.innerHTML="";
+        currentScore.innerHTML="";
         trueBtn.parentNode.removeChild(trueBtn);
         falseBtn.parentNode.removeChild(falseBtn);
         document.getElementById("start").style.display="block";
@@ -302,7 +302,7 @@ function generateCocktail(spirit){
     //NONRESPONSE CONSOLE WARNING
     function(response) {
       if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
+        console.log("Looks like there was a problem. Status Code: " +
           response.status);
         return;
       }
@@ -314,12 +314,12 @@ function generateCocktail(spirit){
 
         let drinkName = data.drinks[drinkInteger].strDrink;
         let drinkId = data.drinks[drinkInteger].idDrink;
-        let cocktailName = drinkName + 'Cocktail';
+        let cocktailName = drinkName + "Cocktail";
 
         appendCocktail(drinkId, drinkName);
 
         // Getting youtube video with cocktail name and finding the videoId;
-        return fetch ('https://www.googleapis.com/youtube/v3/search?key=AIzaSyDODhnbSK7cWXu8d5iAbpRpsdHRFLfFfJM&type=video&part=snippet&maxResults=1&q='+ cocktailName)
+        return fetch ("https://www.googleapis.com/youtube/v3/search?key=AIzaSyDODhnbSK7cWXu8d5iAbpRpsdHRFLfFfJM&type=video&part=snippet&maxResults=1&q="+ cocktailName)
         
       }).then(function(response){
         response.json().then(function(data){
@@ -333,7 +333,7 @@ function generateCocktail(spirit){
     }
   )
   .catch(function(err) {
-    console.log('Fetch Error :-S', err);
+    console.log("Fetch Error :-S", err);
   });
 }
 
@@ -344,32 +344,32 @@ function appendCocktail(drinkId){
     //NONRESPONSE CONSOLE WARNING
     function(response) {
       if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
+        console.log("Looks like there was a problem. Status Code: " +
           response.status);
         return;
       }
 
       //ACTUAL BODY OF FUNCTION
       response.json().then(function(data) {
-        let drinkSection = document.querySelector('#drink-section');
+        let drinkSection = document.querySelector("#drink-section");
         
-        document.getElementById('drink-section').innerHTML = "";
+        document.getElementById("drink-section").innerHTML = "";
 
-        let drinkInfo = document.createElement('h4');
+        let drinkInfo = document.createElement("h4");
         drinkInfo.classList.add("py-1");
         drinkInfo.classList.add("is-size-4");
         drinkInfo.innerHTML = data.drinks[0].strDrink;
 
         drinkSection.appendChild(drinkInfo);
 
-        let img = document.createElement('img');
+        let img = document.createElement("img");
         img.src = data.drinks[0].strDrinkThumb;
         img.classList.add("py-2")
 
         drinkSection.appendChild(img);
 
         for(let i=1; i<16; i++){
-          let ingredient = document.createElement('li');
+          let ingredient = document.createElement("li");
           ingredient.innerHTML = data.drinks[0][`strMeasure${i}`] + " " + data.drinks[0][`strIngredient${i}`];
       
           drinkSection.appendChild(ingredient);
@@ -382,7 +382,7 @@ function appendCocktail(drinkId){
             return;
           }
         }
-        let instruction = document.createElement('li');
+        let instruction = document.createElement("li");
         instruction.innerHTML = data.drinks[0].strInstructions;
 
         drinkSection.appendChild(instruction);
@@ -390,7 +390,7 @@ function appendCocktail(drinkId){
     }
   )
   .catch(function(err) {
-    console.log('Fetch Error :-S', err);
+    console.log("Fetch Error :-S", err);
   });
 }
 
