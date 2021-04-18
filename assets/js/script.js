@@ -447,6 +447,7 @@ window.addEventListener("click", outsideClick);
 // OPEN LOAD MODAL
 function openModal() {
   modal.style.display = "block";
+//CODE TO ATTEMPT AT ONLY LOADING ONCE PER USER
   if(localStorage.getItem("newUser")==="null"){
     modal.style.display = "block";
     localStorage.setItem("newUser", "no")
