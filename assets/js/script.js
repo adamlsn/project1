@@ -361,7 +361,7 @@ function appendCocktail(drinkId){
       
           drinkSection.appendChild(ingredient);
           
-          if(data.drinks[0]["strMeasure${i + 1}"] === null) {
+          if(data.drinks[0][`strMeasure${i + 1}`] === null) {
             let description = document.createElement("p");
             description.innerHTML = data.drinks[0].strInstructions;
             description.classList.add("pt-3");
@@ -447,6 +447,7 @@ window.addEventListener("click", outsideClick);
 // OPEN LOAD MODAL
 function openModal() {
   modal.style.display = "block";
+//CODE TO ATTEMPT AT ONLY LOADING ONCE PER USER
   if(localStorage.getItem("newUser")==="null"){
     modal.style.display = "block";
     localStorage.setItem("newUser", "no")
