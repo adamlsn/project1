@@ -361,7 +361,7 @@ function appendCocktail(drinkId){
       
           drinkSection.appendChild(ingredient);
           
-          if(data.drinks[0]["strMeasure${i + 1}"] === null) {
+          if(data.drinks[0][`strMeasure${i + 1}`] === null) {
             let description = document.createElement("p");
             description.innerHTML = data.drinks[0].strInstructions;
             description.classList.add("pt-3");
